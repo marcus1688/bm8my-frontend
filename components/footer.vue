@@ -253,7 +253,7 @@
         >
           <div class="flex items-center">
             <img
-              src="/images/logo.png"
+              :src="generalSetting.logoimage"
               alt="BM8 Logo"
               class="h-10 max-lg:h-8"
             />

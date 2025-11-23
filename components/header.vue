@@ -1455,7 +1455,11 @@
             >
               <div class="bg-gradient-to-r from-[#1f0a0f] to-[#3d1219] p-4">
                 <div class="flex justify-between items-center">
-                  <img src="/images/logo.png" alt="Logo" class="h-auto w-16" />
+                  <img
+                    :src="generalSetting.logoimage"
+                    alt="Logo"
+                    class="h-auto w-16"
+                  />
                   <div class="flex items-center gap-2">
                     <div class="relative language-dropdown hidden">
                       <button
@@ -1791,7 +1795,11 @@
                       >
                         <div class="flex items-center justify-between">
                           <div class="flex items-center gap-3">
-                            <img src="/images/logo.png" alt="" class="w-8" />
+                            <img
+                              :src="generalSetting.logoimage"
+                              alt=""
+                              class="w-8"
+                            />
                             <div>
                               <p class="text-sm font-semibold text-[#f0eaea]">
                                 {{ $t("main_wallet") }}

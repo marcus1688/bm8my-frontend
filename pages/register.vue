@@ -42,7 +42,7 @@
       <div class="w-full max-w-sm relative">
         <div class="text-center mb-3">
           <div class="inline-block p-0.5">
-            <img src="/images/logo.png" alt="BM8" class="w-36" />
+            <img :src="generalSetting.logoimage" alt="BM8" class="w-36" />
           </div>
         </div>
 
@@ -360,6 +360,7 @@ const route = useRoute();
 const referralFromUrl = ref(route.query.referral || "");
 const localePath = useLocalePath();
 const isUserLoggedIn = useState("isUserLoggedIn");
+const generalSetting = useState("generalSetting");
 const { post } = useApiEndpoint();
 const router = useRouter();
 const pageLoading = useState("pageLoading");

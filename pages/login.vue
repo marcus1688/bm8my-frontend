@@ -44,7 +44,7 @@
         <!-- Logo with animation -->
         <div class="text-center mb-3">
           <div class="inline-block p-0.5">
-            <img src="/images/logo.png" alt="BM8" class="w-36" />
+            <img :src="generalSetting.logoimage" alt="BM8" class="w-36" />
           </div>
         </div>
 
@@ -199,6 +199,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 
+const generalSetting = useState("generalSetting");
 const loginButtonLoading = ref(false);
 const localePath = useLocalePath();
 const router = useRouter();
