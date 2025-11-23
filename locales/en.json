@@ -1328,5 +1328,9 @@
   "mission_notice_2": "You can only claim each mission reward once per day",
   "mission_notice_3": "Lucky Spin Points can be used to spin the Lucky Wheel",
   "reward": "Reward",
-  "login_to_view_missions": "Please login to view your daily missions"
+  "login_to_view_missions": "Please login to view your daily missions",
+  "thailand": "Thailand",
+  "vietnam": "Vietnam",
+  "philippines": "Philippines",
+  "coming_soon": "Coming Soon"
 }

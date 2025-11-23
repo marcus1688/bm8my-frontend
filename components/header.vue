@@ -1078,6 +1078,63 @@
                         </div>
                       </div>
                     </div>
+
+                    <!-- Thailand -->
+                    <div class="mb-2">
+                      <div class="flex items-center justify-between px-3 py-2">
+                        <div class="flex items-center gap-2">
+                          <img
+                            src="/images/flags/thailand.png"
+                            alt="Thailand"
+                            class="w-7 h-auto"
+                          />
+                          <span class="text-sm font-semibold text-[#f0eaea]">
+                            {{ $t("thailand") }}
+                          </span>
+                        </div>
+                        <span class="text-xs text-[#b37a7a] italic">
+                          {{ $t("coming_soon") }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Vietnam -->
+                    <div class="mb-2">
+                      <div class="flex items-center justify-between px-3 py-2">
+                        <div class="flex items-center gap-2">
+                          <img
+                            src="/images/flags/vietnam.png"
+                            alt="Vietnam"
+                            class="w-7 h-auto"
+                          />
+                          <span class="text-sm font-semibold text-[#f0eaea]">
+                            {{ $t("vietnam") }}
+                          </span>
+                        </div>
+                        <span class="text-xs text-[#b37a7a] italic">
+                          {{ $t("coming_soon") }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Philippines -->
+                    <div>
+                      <div class="flex items-center justify-between px-3 py-2">
+                        <div class="flex items-center gap-2">
+                          <img
+                            src="/images/flags/philippines.png"
+                            alt="Philippines"
+                            class="w-7 h-auto"
+                          />
+                          <span class="text-sm font-semibold text-[#f0eaea]">
+                            {{ $t("philippines") }}
+                          </span>
+                        </div>
+                        <span class="text-xs text-[#b37a7a] italic">
+                          {{ $t("coming_soon") }}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1631,6 +1688,63 @@
                               中文
                             </button>
                           </div>
+                        </div>
+                      </div>
+
+                      <!-- Thailand -->
+                      <div class="mb-2">
+                        <div class="flex items-center justify-between py-2">
+                          <div class="flex items-center gap-2">
+                            <img
+                              src="/images/flags/thailand.png"
+                              alt="Thailand"
+                              class="w-7 h-auto"
+                            />
+                            <span class="text-sm font-semibold text-[#f0eaea]">
+                              {{ $t("thailand") }}
+                            </span>
+                          </div>
+                          <span class="text-xs text-[#b37a7a] italic">
+                            {{ $t("coming_soon") }}
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Vietnam -->
+                      <div class="mb-2">
+                        <div class="flex items-center justify-between py-2">
+                          <div class="flex items-center gap-2">
+                            <img
+                              src="/images/flags/vietnam.png"
+                              alt="Vietnam"
+                              class="w-7 h-auto"
+                            />
+                            <span class="text-sm font-semibold text-[#f0eaea]">
+                              {{ $t("vietnam") }}
+                            </span>
+                          </div>
+                          <span class="text-xs text-[#b37a7a] italic">
+                            {{ $t("coming_soon") }}
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Philippines -->
+                      <div>
+                        <div class="flex items-center justify-between py-2">
+                          <div class="flex items-center gap-2">
+                            <img
+                              src="/images/flags/philippines.png"
+                              alt="Philippines"
+                              class="w-7 h-auto"
+                            />
+                            <span class="text-sm font-semibold text-[#f0eaea]">
+                              {{ $t("philippines") }}
+                            </span>
+                          </div>
+                          <span class="text-xs text-[#b37a7a] italic">
+                            {{ $t("coming_soon") }}
+                          </span>
                         </div>
                       </div>
                     </div>
