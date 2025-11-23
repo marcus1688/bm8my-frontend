@@ -246,7 +246,7 @@
                         v-if="match.status.short !== 'NS'"
                         class="bg-gradient-to-br from-[#1A0D13] to-[#15090e] px-2 py-2 rounded-lg shadow-md border border-[#3b1c23]"
                       >
-                        <div class="flex items-center justify-center gap-2">
+                        <div class="flex items-center justify-center gap-4">
                           <span class="text-base font-bold text-[#f0eaea]">{{
                             match.goals.home ?? 0
                           }}</span>
