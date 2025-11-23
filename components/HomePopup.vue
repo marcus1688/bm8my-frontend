@@ -92,6 +92,8 @@ const props = defineProps({
 
 const show = ref(true);
 const imageLoading = ref(true);
+const shouldShowPopup = useState("shouldShowPopup");
+const activePopup = useState("activePopup");
 
 const getLocalizedContent = (data, type) => {
   if (!data) return "";
@@ -117,6 +119,8 @@ const closePopup = () => {
   if (props.popupData._id) {
     localStorage.setItem("lastPopupId", props.popupData._id);
     localStorage.setItem("lastPopupTime", new Date().toISOString());
+    shouldShowPopup.value = false;
+    activePopup.value = null;
   }
 };
 
