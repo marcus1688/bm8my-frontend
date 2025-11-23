@@ -130,47 +130,78 @@
       <!-- Mobile Tab  -->
       <section class="lg:hidden containerWid px-4 pb-6">
         <div class="mb-4">
-          <div class="overflow-x-auto scrollbar-hide -mx-4 px-4">
-            <div class="grid grid-cols-6 gap-2 pb-2" style="min-width: 600px">
-              <button
-                v-for="level in settingsData.vipLevels"
-                :key="level.name"
-                @click="selectedMobileLevel = level"
-                class="flex flex-col items-center gap-2 py-3 rounded-lg transition-all relative"
-              >
-                <div
-                  class="w-22 h-22 max-md:w-18 max-md:h-18 rounded-full flex items-center justify-center transition-all"
-                  :class="
-                    selectedMobileLevel?.name === level.name
-                      ? 'ring-2 ring-[#ff3344] ring-offset-2 ring-offset-[#0a0005] scale-110'
-                      : 'opacity-50'
-                  "
-                >
-                  <img
-                    v-if="level.iconUrl"
-                    :src="level.iconUrl"
-                    alt="VIP"
-                    class="w-20 h-20 max-md:w-16 max-md:h-16"
-                  />
-                </div>
-
-                <span
-                  class="text-sm max-md:text-xs mt-1 font-semibold text-center transition-colors leading-tight"
-                  :class="
-                    selectedMobileLevel?.name === level.name
-                      ? 'text-[#ff3344]'
-                      : 'text-[#b37a7a]'
-                  "
-                >
-                  {{ getLocalizedLevelName(level.name) }}
-                </span>
-
-                <div
-                  v-if="selectedMobileLevel?.name === level.name"
-                  class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-[#ff3344] rounded-full"
-                ></div>
-              </button>
+          <div class="relative">
+            <div
+              v-if="canScrollLeft"
+              class="absolute left-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none"
+            >
+              <i
+                class="bi bi-chevron-left text-[#ff3344] text-2xl animate-pulse drop-shadow-lg"
+              ></i>
             </div>
+            <div
+              v-if="canScrollRight"
+              class="absolute right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none"
+            >
+              <i
+                class="bi bi-chevron-right text-[#ff3344] text-2xl animate-pulse drop-shadow-lg"
+              ></i>
+            </div>
+
+            <div
+              ref="scrollContainer"
+              @scroll="checkScroll"
+              class="overflow-x-auto scrollbar-hide -mx-4 px-4"
+            >
+              <div class="grid grid-cols-6 gap-2 pb-2" style="min-width: 600px">
+                <button
+                  v-for="level in settingsData.vipLevels"
+                  :key="level.name"
+                  @click="selectedMobileLevel = level"
+                  class="flex flex-col items-center gap-2 py-3 rounded-lg transition-all relative"
+                >
+                  <div
+                    class="w-22 h-22 max-md:w-18 max-md:h-18 rounded-full flex items-center justify-center transition-all"
+                    :class="
+                      selectedMobileLevel?.name === level.name
+                        ? 'ring-2 ring-[#ff3344] ring-offset-2 ring-offset-[#0a0005] scale-110'
+                        : 'opacity-50'
+                    "
+                  >
+                    <img
+                      v-if="level.iconUrl"
+                      :src="level.iconUrl"
+                      alt="VIP"
+                      class="w-20 h-20 max-md:w-16 max-md:h-16"
+                    />
+                  </div>
+
+                  <span
+                    class="text-sm max-md:text-xs mt-1 font-semibold text-center transition-colors leading-tight"
+                    :class="
+                      selectedMobileLevel?.name === level.name
+                        ? 'text-[#ff3344]'
+                        : 'text-[#b37a7a]'
+                    "
+                  >
+                    {{ getLocalizedLevelName(level.name) }}
+                  </span>
+
+                  <div
+                    v-if="selectedMobileLevel?.name === level.name"
+                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-[#ff3344] rounded-full"
+                  ></div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            v-if="showSwipeHint"
+            class="flex items-center justify-center gap-2 mt-2 text-[#b37a7a] text-xs animate-pulse"
+          >
+            <i class="bi bi-arrow-left-right"></i>
+            <span>{{ $t("swipe_to_see_more_levels") }}</span>
           </div>
         </div>
         <div v-if="selectedMobileLevel" class="space-y-4">
@@ -493,6 +524,23 @@ const getSectionTitle = (rowName) => {
   return getGroupName(rowName);
 };
 
+const scrollContainer = ref(null);
+const canScrollLeft = ref(false);
+const canScrollRight = ref(false);
+const showSwipeHint = ref(true);
+
+const checkScroll = () => {
+  if (!scrollContainer.value) return;
+  const element = scrollContainer.value;
+  canScrollLeft.value = element.scrollLeft > 0;
+  canScrollRight.value =
+    element.scrollLeft < element.scrollWidth - element.clientWidth - 10;
+  if (element.scrollLeft > 0) {
+    showSwipeHint.value = false;
+    localStorage.setItem("vip_swipe_hint_seen", "true");
+  }
+};
+
 useHead({
   title: "BM8 | VIP Membership Program & Exclusive Benefits - Malaysia Casino",
   meta: [
@@ -527,6 +575,14 @@ onMounted(async () => {
   pageLoading.value = true;
   try {
     await fetchSettings();
+    const hintSeen = localStorage.getItem("vip_swipe_hint_seen");
+    showSwipeHint.value = !hintSeen;
+    nextTick(() => {
+      checkScroll();
+    });
+    setTimeout(() => {
+      showSwipeHint.value = false;
+    }, 3000);
   } catch (error) {
     console.error("Error during initialization:", error);
   } finally {
