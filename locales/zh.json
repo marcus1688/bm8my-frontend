@@ -1334,5 +1334,8 @@
   "vietnam": "越南",
   "philippines": "菲律宾",
   "coming_soon": "即将推出",
-  "swipe_to_see_more_levels": "滑动查看更多VIP等级"
+  "swipe_to_see_more_levels": "滑动查看更多VIP等级",
+  "bank_min_deposit": "{bank} 的最低存款金额为 MYR {min}",
+  "bank_max_deposit": "{bank} 的最高存款金额为 MYR {max}",
+  "deposit_limit": "存款限额"
 }

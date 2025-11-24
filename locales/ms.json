@@ -1334,5 +1334,8 @@
   "vietnam": "Vietnam",
   "philippines": "Philippines",
   "coming_soon": "Coming Soon",
-  "swipe_to_see_more_levels": "Leret untuk melihat lebih banyak tahap VIP"
+  "swipe_to_see_more_levels": "Leret untuk melihat lebih banyak tahap VIP",
+  "bank_min_deposit": "Deposit minimum untuk {bank} ialah MYR {min}",
+  "bank_max_deposit": "Deposit maksimum untuk {bank} ialah MYR {max}",
+  "deposit_limit": "Had deposit"
 }

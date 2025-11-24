@@ -183,7 +183,64 @@
         </div>
       </div>
 
-      <!-- Bank Transfer Options -->
+      <div
+        v-if="
+          selectedOption === 'fast_deposit' &&
+          selectedPaymentGateway &&
+          selectedPaymentGatewayBanks.length > 0
+        "
+        class="mb-4"
+      >
+        <label class="block font-semibold mb-2 text-base max-lg:text-sm">
+          {{ $t("select_bank_for", { provider: selectedPaymentGateway.name }) }}
+        </label>
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-lg:gap-2"
+        >
+          <div
+            v-for="bank in selectedPaymentGatewayBanks"
+            :key="bank.code"
+            @click="selectGatewayBank(bank)"
+            :class="[
+              'p-4 max-lg:p-3 rounded-lg cursor-pointer transition-all flex flex-col items-center border',
+              selectedGatewayBank && selectedGatewayBank.code === bank.code
+                ? 'bg-[#ff3344]/10 border-[#ff3344]'
+                : 'bg-[#241017] border-[#3b1c23] lg:hover:border-[#ff3344]/50',
+            ]"
+          >
+            <img
+              :src="bank.logo"
+              :alt="bank.name"
+              class="w-16 h-16 max-lg:w-12 max-lg:h-12 object-contain mb-2"
+            />
+            <p
+              class="text-sm max-lg:text-xs font-medium text-center text-[#f0eaea]"
+            >
+              {{ bank.name }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          v-if="selectedGatewayBank"
+          class="mt-3 p-3 bg-[#241017] border border-[#3b1c23] rounded-lg"
+        >
+          <p class="text-sm max-lg:text-xs text-[#b37a7a]">
+            <span class="text-[#f0eaea] font-medium">{{
+              selectedGatewayBank.name
+            }}</span>
+            {{ $t("deposit_limit") }}:
+            <span class="text-[#ff3344]"
+              >MYR {{ selectedGatewayBank.minLimit.toLocaleString() }}</span
+            >
+            -
+            <span class="text-[#ff3344]"
+              >MYR {{ selectedGatewayBank.maxLimit.toLocaleString() }}</span
+            >
+          </p>
+        </div>
+      </div>
+
       <div v-if="selectedOption === 'bank_transfer'" class="mb-4">
         <label class="block font-semibold mb-2 text-base max-lg:text-sm">{{
           $t("select_bank")
@@ -442,10 +499,6 @@ function selectBank(bank) {
   selectedBank.value = bank;
 }
 
-function selectPaymentGateway(gateway) {
-  selectedPaymentGateway.value = gateway;
-}
-
 function onlyNumbers() {
   selectedDepositAmount.value = selectedDepositAmount.value.replace(/\D/g, "");
 }
@@ -466,15 +519,14 @@ function removeReceipt() {
 }
 
 function resetForm() {
-  console.log(selectedBank.value, "Hihasidad");
   selectedOption.value = "fast_deposit";
   selectedDepositAmount.value = "";
   selectedBank.value = null;
   receipt.value = null;
   receiptPreview.value = "";
   selectedPromotion.value = null;
-  selectedBank.value = null;
   selectedPaymentGateway.value = null;
+  selectedGatewayBank.value = null;
   if (fileInput.value) fileInput.value.value = "";
 }
 
@@ -527,6 +579,33 @@ async function submitBonus(depositId) {
   } catch (error) {
     console.error("Failed to submit bonus:", error);
   }
+}
+
+const selectedGatewayBank = ref(null);
+
+const selectedPaymentGatewayBanks = computed(() => {
+  if (!selectedPaymentGateway.value) return [];
+
+  return (
+    selectedPaymentGateway.value.banks
+      ?.filter((bank) => bank.active)
+      .map((bank) => ({
+        name: bank.bankname,
+        code: bank.bankcode,
+        logo: bank.bankimage,
+        minLimit: bank.minlimit || 0,
+        maxLimit: bank.maxlimit || Infinity,
+      })) || []
+  );
+});
+
+function selectGatewayBank(bank) {
+  selectedGatewayBank.value = bank;
+}
+
+function selectPaymentGateway(gateway) {
+  selectedPaymentGateway.value = gateway;
+  selectedGatewayBank.value = null;
 }
 
 async function submitDeposit() {
@@ -599,52 +678,42 @@ async function submitDeposit() {
   try {
     if (selectedOption.value === "fast_deposit") {
       const { minDeposit, maxDeposit } = selectedPaymentGateway.value;
-      if (amount < minDeposit || amount > maxDeposit) {
+      // if (amount < minDeposit || amount > maxDeposit) {
+      //   showAlert(
+      //     $t("alert_info"),
+      //     $t("amount_between", { min: minDeposit, max: maxDeposit })
+      //   );
+      //   return;
+      // }
+
+      if (
+        selectedPaymentGatewayBanks.value.length > 0 &&
+        !selectedGatewayBank.value
+      ) {
         showAlert(
           $t("alert_info"),
-          $t("amount_between", { min: minDeposit, max: maxDeposit })
+          $t("please_select_bank_for", {
+            provider: selectedPaymentGateway.value.name,
+          })
         );
         return;
       }
 
-      if (selectedPaymentGateway.value.name === "DGPay") {
-        if (!selectedDGPayBank.value) {
+      if (selectedGatewayBank.value) {
+        const { minLimit, maxLimit, name } = selectedGatewayBank.value;
+
+        if (amount < minLimit) {
           showAlert(
             $t("alert_info"),
-            $t("please_select_bank_for", { provider: "DGPay" })
-          );
-          return;
-        }
-      } else if (selectedPaymentGateway.value.name === "TruePay") {
-        if (!selectedTruePayBank.value) {
-          showAlert(
-            $t("alert_info"),
-            $t("please_select_bank_for", { provider: "TruePay" })
+            $t("bank_min_deposit", { bank: name, min: minLimit })
           );
           return;
         }
 
-        if (
-          (selectedTruePayBank.value.code === "FPX" ||
-            selectedTruePayBank.value.code === "FPXDUITNOW") &&
-          amount < 100
-        ) {
-          showAlert($t("alert_info"), $t("fpx_alert_warning"));
-          return;
-        }
-      } else if (selectedPaymentGateway.value.name === "LuxePay") {
-        if (!selectedLuxePayBank.value) {
+        if (amount > maxLimit) {
           showAlert(
             $t("alert_info"),
-            $t("please_select_bank_for", { provider: "LuxePay" })
-          );
-          return;
-        }
-      } else if (selectedPaymentGateway.value.name === "SKL99") {
-        if (!selectedSKL99Bank.value) {
-          showAlert(
-            $t("alert_info"),
-            $t("please_select_bank_for", { provider: "SKL99" })
+            $t("bank_max_deposit", { bank: name, max: maxLimit })
           );
           return;
         }
@@ -656,14 +725,8 @@ async function submitDeposit() {
         requestParams.promotionId = selectedPromotion.value._id;
       }
 
-      if (selectedPaymentGateway.value.name === "DGPay") {
-        requestParams.bankCode = selectedDGPayBank.value.code;
-      } else if (selectedPaymentGateway.value.name === "TruePay") {
-        requestParams.bankCode = selectedTruePayBank.value.code;
-      } else if (selectedPaymentGateway.value.name === "LuxePay") {
-        requestParams.bankCode = selectedLuxePayBank.value.code;
-      } else if (selectedPaymentGateway.value.name === "SKL99") {
-        requestParams.bankCode = selectedSKL99Bank.value.code;
+      if (selectedGatewayBank.value) {
+        requestParams.bankCode = selectedGatewayBank.value.code;
       }
 
       const { data } = await post(
