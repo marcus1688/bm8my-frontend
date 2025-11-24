@@ -19,7 +19,6 @@
     "@internationalized/date": "^3.7.0",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/i18n": "^9.1.0",
-    "@oxc-transform/binding-win32-x64-msvc": "^0.99.0",
     "@pinia/nuxt": "^0.5.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@tsparticles/engine": "^3.3.0",
