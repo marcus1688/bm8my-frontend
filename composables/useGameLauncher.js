@@ -12,6 +12,10 @@ export const useGameLauncher = () => {
   const alertMessage = ref("");
   const alertType = ref("");
 
+  const isMobileDevice = () => {
+    return window.innerWidth < 1023;
+  };
+
   const launchGame = async (game) => {
     if (!userData.value) {
       alertTitle.value = $t("info");
@@ -118,6 +122,7 @@ export const useGameLauncher = () => {
       const requestBody = {
         gameLang: $locale.value || "en",
         gameType: game.categoryId.name,
+        clientPlatform: isMobileDevice() ? "mobile" : "web",
       };
 
       if (game.isManualGame) {
