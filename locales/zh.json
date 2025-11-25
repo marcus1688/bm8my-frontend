@@ -1205,13 +1205,13 @@
   "spin_rule_1": "累积 {points} 积分即可获得1次幸运转盘机会。积分通过游戏和存款累积。",
   "spin_rule_2": "点击旋转按钮启动转盘。转盘将自动停在随机奖品位置。",
   "spin_rule_3": "根据转盘停止的位置赢取即时现金奖品。奖品将立即存入您的账户。",
-  "spin_prize_1": "特等奖：MYR 100 - 幸运大奖得主",
-  "spin_prize_2": "一等奖：MYR 50 - 优秀旋转结果",
-  "spin_prize_3": "二等奖：MYR 20 - 丰厚奖金",
-  "spin_prize_4": "三等奖：MYR 10 - 不错的奖励",
-  "spin_prize_5": "四等奖：MYR 5 - 总比没有好",
-  "spin_prize_6": "五等奖：MYR 2 - 小奖",
-  "spin_prize_7": "六等奖：MYR 1 - 安慰奖",
+  "spin_prize_1": "特等奖：MYR 188 - 幸运大奖得主",
+  "spin_prize_2": "一等奖：MYR 68 - 优秀旋转结果",
+  "spin_prize_3": "二等奖：MYR 38 - 丰厚奖金",
+  "spin_prize_4": "三等奖：MYR 18 - 不错的奖励",
+  "spin_prize_5": "四等奖：MYR 8 - 总比没有好",
+  "spin_prize_6": "五等奖：MYR 5 - 小奖",
+  "spin_prize_7": "六等奖：MYR 3 - 安慰奖",
   "spin_prize_8": "下次好运：MYR 0 - 下次再来",
   "spin_terms_1": "每累积100积分等于1次幸运转盘机会。积分不可转让或兑换现金。",
   "spin_terms_2": "所有奖品将直接存入您的账户余额，可根据我们的条款用于游戏或提款。",
@@ -1337,5 +1337,6 @@
   "swipe_to_see_more_levels": "滑动查看更多VIP等级",
   "bank_min_deposit": "{bank} 的最低存款金额为 MYR {min}",
   "bank_max_deposit": "{bank} 的最高存款金额为 MYR {max}",
-  "deposit_limit": "存款限额"
+  "deposit_limit": "存款限额",
+  "invitation_only": "仅限邀请"
 }

@@ -1205,13 +1205,13 @@
   "spin_rule_1": "Earn {points} points to receive 1 Lucky Spin chance. Points are accumulated through gameplay and deposits.",
   "spin_rule_2": "Click the spin button to start the wheel. The wheel will automatically stop at a random prize position.",
   "spin_rule_3": "Win instant cash prizes based on where the wheel stops. Prizes are credited to your account immediately.",
-  "spin_prize_1": "Grand Prize: MYR 100 - Lucky jackpot winner",
-  "spin_prize_2": "Major Prize: MYR 50 - Excellent spin result",
-  "spin_prize_3": "Big Prize: MYR 20 - Great winning",
-  "spin_prize_4": "Medium Prize: MYR 10 - Nice reward",
-  "spin_prize_5": "Small Prize: MYR 5 - Better than nothing",
-  "spin_prize_6": "Mini Prize: MYR 2 - Small win",
-  "spin_prize_7": "Tiny Prize: MYR 1 - Consolation prize",
+  "spin_prize_1": "Grand Prize: MYR 188 - Lucky jackpot winner",
+  "spin_prize_2": "Major Prize: MYR 68 - Excellent spin result",
+  "spin_prize_3": "Big Prize: MYR 38 - Great winning",
+  "spin_prize_4": "Medium Prize: MYR 18 - Nice reward",
+  "spin_prize_5": "Small Prize: MYR 8 - Better than nothing",
+  "spin_prize_6": "Mini Prize: MYR 5 - Small win",
+  "spin_prize_7": "Tiny Prize: MYR 3 - Consolation prize",
   "spin_prize_8": "Better Luck: MYR 0 - Try again next time",
   "spin_terms_1": "Each 100 points accumulated equals 1 Lucky Spin opportunity. Points cannot be transferred or exchanged for cash.",
   "spin_terms_2": "All prizes are credited directly to your account balance and can be used for gameplay or withdrawal according to our terms.",
@@ -1336,5 +1336,6 @@
   "swipe_to_see_more_levels": "Swipe to see more VIP levels",
   "bank_min_deposit": "Minimum deposit for {bank} is MYR {min}",
   "bank_max_deposit": "Maximum deposit for {bank} is MYR {max}",
-  "deposit_limit": "Deposit limit"
+  "deposit_limit": "Deposit limit",
+  "invitation_only": "Invitation Only"
 }

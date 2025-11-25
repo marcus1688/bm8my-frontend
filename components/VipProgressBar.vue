@@ -21,9 +21,12 @@
               <span class="text-[#b37a7a] text-xs font-medium">{{
                 $t("current_level")
               }}</span>
-              <span class="text-[#f0eaea] font-bold">
-                {{ getLocalizedLevelName(userData.viplevel) }}</span
+              <span
+                class="text-[#f0eaea] font-bold truncate"
+                :class="{ 'text-xs': shouldUseSmallerFont }"
               >
+                {{ getLocalizedLevelName(userData.viplevel) }}
+              </span>
             </div>
           </div>
 
@@ -32,9 +35,12 @@
               <span class="text-[#b37a7a] text-xs font-medium">{{
                 $t("next_level")
               }}</span>
-              <span class="text-[#f0eaea] font-bold">
-                {{ getLocalizedLevelName(nextLevelInfo.name) }}</span
+              <span
+                class="text-[#f0eaea] font-bold truncate"
+                :class="{ 'text-xs': shouldUseSmallerFont }"
               >
+                {{ getLocalizedLevelName(nextLevelInfo.name) }}
+              </span>
             </div>
             <div
               class="w-8 h-8 rounded-full flex items-center justify-center shadow-lg opacity-90"
@@ -47,21 +53,7 @@
               />
             </div>
           </div>
-          <div v-else class="flex items-center gap-2">
-            <div class="flex flex-col items-end">
-              <span class="text-[#b37a7a] text-xs font-medium">{{
-                $t("level_status")
-              }}</span>
-              <span class="text-yellow-300 font-bold">{{
-                $t("max_level")
-              }}</span>
-            </div>
-            <div
-              class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 flex items-center justify-center shadow-lg"
-            >
-              <i class="bi bi-trophy-fill text-yellow-300 drop-shadow-md"></i>
-            </div>
-          </div>
+          <div v-else class="flex items-center"></div>
         </div>
 
         <div
@@ -87,14 +79,31 @@
 
         <div class="flex items-center justify-between text-xs mt-2">
           <div class="text-[#b37a7a]">
-            <span class="font-medium text-[#f0eaea]">{{
-              formatNumber(userData.totaldeposit)
-            }}</span>
-            <span class="mx-1">/</span>
-            <span v-if="nextLevelInfo" class="text-[#ff3344]">{{
-              formatNumber(nextLevelRequirement)
-            }}</span>
-            <span v-else class="text-yellow-300">{{ $t("max_reached") }}</span>
+            <template v-if="nextLevelInfo">
+              <span class="font-medium text-[#f0eaea]">{{
+                formatNumber(userData.totaldeposit)
+              }}</span>
+              <template
+                v-if="!isNaN(nextLevelRequirement) && nextLevelRequirement > 0"
+              >
+                <span class="mx-1">/</span>
+                <span class="text-[#ff3344]">{{
+                  formatNumber(nextLevelRequirement)
+                }}</span>
+              </template>
+              <template v-else>
+                <span class="mx-1">-</span>
+                <span class="text-yellow-300 font-medium">{{
+                  $t("invitation_only")
+                }}</span>
+              </template>
+            </template>
+            <template v-else>
+              <span class="text-yellow-300 font-medium flex items-center gap-1">
+                <i class="bi bi-check-circle-fill"></i>
+                {{ $t("max_reached") }}
+              </span>
+            </template>
           </div>
           <div class="flex items-center gap-1.5 text-[#b37a7a]">
             <span
@@ -310,6 +319,14 @@ function formatNumber(value) {
   if (!value && value !== 0) return "";
   return parseFloat(value).toLocaleString("en-US");
 }
+
+const shouldUseSmallerFont = computed(() => {
+  const currentLevelName = getLocalizedLevelName(userData.value.viplevel);
+  const nextLevelName = nextLevelInfo.value
+    ? getLocalizedLevelName(nextLevelInfo.value.name)
+    : "";
+  return currentLevelName.length > 10 || nextLevelName.length > 10;
+});
 
 watch(() => userData.value?.totaldeposit, updateProgress, { immediate: true });
 watch(progressPercentage, updateProgress);

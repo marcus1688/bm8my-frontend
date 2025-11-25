@@ -1205,13 +1205,13 @@
   "spin_rule_1": "Kumpul {points} mata untuk mendapat 1 peluang Lucky Spin. Mata dikumpul melalui permainan dan deposit.",
   "spin_rule_2": "Klik butang pusing untuk mulakan roda. Roda akan berhenti secara automatik di kedudukan hadiah rawak.",
   "spin_rule_3": "Menangi hadiah wang tunai segera berdasarkan tempat roda berhenti. Hadiah akan dikreditkan ke akaun anda serta-merta.",
-  "spin_prize_1": "Hadiah Utama: MYR 100 - Pemenang jackpot bertuah",
-  "spin_prize_2": "Hadiah Besar: MYR 50 - Keputusan pusingan cemerlang",
-  "spin_prize_3": "Hadiah Tinggi: MYR 20 - Kemenangan hebat",
-  "spin_prize_4": "Hadiah Sederhana: MYR 10 - Ganjaran yang bagus",
-  "spin_prize_5": "Hadiah Kecil: MYR 5 - Lebih baik daripada tiada",
-  "spin_prize_6": "Hadiah Mini: MYR 2 - Kemenangan kecil",
-  "spin_prize_7": "Hadiah Kecil: MYR 1 - Hadiah saguhati",
+  "spin_prize_1": "Hadiah Utama: MYR 188 - Pemenang jackpot bertuah",
+  "spin_prize_2": "Hadiah Besar: MYR 68 - Keputusan pusingan cemerlang",
+  "spin_prize_3": "Hadiah Tinggi: MYR 38 - Kemenangan hebat",
+  "spin_prize_4": "Hadiah Sederhana: MYR 18 - Ganjaran yang bagus",
+  "spin_prize_5": "Hadiah Kecil: MYR 8 - Lebih baik daripada tiada",
+  "spin_prize_6": "Hadiah Mini: MYR 5 - Kemenangan kecil",
+  "spin_prize_7": "Hadiah Kecil: MYR 3 - Hadiah saguhati",
   "spin_prize_8": "Nasib Baik: MYR 0 - Cuba lagi lain kali",
   "spin_terms_1": "Setiap 100 mata terkumpul bersamaan 1 peluang Pusing Bertuah. Mata tidak boleh dipindahkan atau ditukar dengan wang tunai.",
   "spin_terms_2": "Semua hadiah dikreditkan terus ke baki akaun anda dan boleh digunakan untuk permainan atau pengeluaran mengikut terma kami.",
@@ -1337,5 +1337,6 @@
   "swipe_to_see_more_levels": "Leret untuk melihat lebih banyak tahap VIP",
   "bank_min_deposit": "Deposit minimum untuk {bank} ialah MYR {min}",
   "bank_max_deposit": "Deposit maksimum untuk {bank} ialah MYR {max}",
-  "deposit_limit": "Had deposit"
+  "deposit_limit": "Had deposit",
+  "invitation_only": "Jemputan Sahaja"
 }

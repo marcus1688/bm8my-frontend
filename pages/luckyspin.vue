@@ -9,7 +9,7 @@
             class="bg-[#15090e] rounded-xl border border-[#3b1c23]/50 overflow-hidden"
           >
             <div
-              class="relative flex justify-center py-12 px-4 max-lg:px-2 max-lg:py-8"
+              class="relative flex justify-center py-16 px-4 max-lg:px-3 max-lg:py-12"
               style="
                 background: linear-gradient(135deg, #1a0d13 0%, #0f0509 100%);
               "
@@ -21,18 +21,30 @@
                 <div
                   class="relative w-[65%] max-lg:w-full max-lg:max-w-md flex flex-col items-center"
                 >
-                  <img
-                    src="/images/luckyspin/wheel-prize.png"
-                    alt="Wheel Prize"
-                    class="w-[70%] max-lg:w-full h-auto transition-transform duration-[4s] ease-in-out"
-                    :style="{ transform: `rotate(${rotation}deg)` }"
-                  />
+                  <!-- Wheel Container with Frame -->
+                  <div class="relative w-[60%] max-lg:w-full">
+                    <!-- Rotating Wheel -->
+                    <img
+                      src="/images/luckyspin/wheel-prize.png"
+                      alt="Wheel Prize"
+                      class="w-full h-auto transition-transform duration-[4s] ease-in-out"
+                      :style="{ transform: `rotate(${rotation}deg)` }"
+                    />
+
+                    <!-- Static Frame Overlay -->
+                    <img
+                      src="/images/luckyspin/wheel-frame.png"
+                      alt="Wheel Frame"
+                      class="absolute left-[46%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-10"
+                      style="transform: translate(-50%, -50%) scale(1.25)"
+                    />
+                  </div>
 
                   <!-- Spin Button -->
                   <img
                     src="/images/luckyspin/spin.png"
                     alt="Spin Button"
-                    class="w-[5%] max-lg:w-[10%] h-auto absolute left-1/2 top-[35%] -translate-x-1/2 cursor-pointer z-50 transition-transform lg:hover:scale-110"
+                    class="w-[5%] max-lg:w-[10%] h-auto absolute left-1/2 top-[38%] max-xl:top-[35%] -translate-x-1/2 cursor-pointer z-50 transition-transform lg:hover:scale-110"
                     @click="spinWheel"
                   />
 
@@ -57,7 +69,7 @@
 
                   <!-- Text Box with Available Points -->
                   <div
-                    class="relative w-full mt-6 max-lg:mt-4 flex justify-center"
+                    class="relative w-full mt-8 max-lg:mt-8 flex justify-center"
                   >
                     <img
                       src="/images/luckyspin/text-box.png"
@@ -266,7 +278,7 @@
               <p
                 class="text-3xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-2xl"
               >
-                MYR 100
+                MYR 188
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
@@ -294,7 +306,7 @@
               <p
                 class="text-2xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-xl"
               >
-                MYR 50
+                MYR 68
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
@@ -322,7 +334,7 @@
               <p
                 class="text-2xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-xl"
               >
-                MYR 20
+                MYR 38
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
@@ -350,7 +362,7 @@
               <p
                 class="text-2xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-xl"
               >
-                MYR 10
+                MYR 18
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
@@ -378,7 +390,7 @@
               <p
                 class="text-xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-lg"
               >
-                MYR 5
+                MYR 8
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
@@ -405,7 +417,7 @@
               <p
                 class="text-xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-lg"
               >
-                MYR 2
+                MYR 5
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
@@ -432,7 +444,7 @@
               <p
                 class="text-xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-lg"
               >
-                MYR 1
+                MYR 3
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
