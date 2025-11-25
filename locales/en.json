@@ -1337,5 +1337,15 @@
   "bank_min_deposit": "Minimum deposit for {bank} is MYR {min}",
   "bank_max_deposit": "Maximum deposit for {bank} is MYR {max}",
   "deposit_limit": "Deposit limit",
-  "invitation_only": "Invitation Only"
+  "invitation_only": "Invitation Only",
+  "select_platform": "Select Platform",
+  "choose_platform_message": "Choose your preferred platform to launch the game",
+  "desktop_version": "Desktop Version",
+  "optimized_for_desktop": "Optimized for larger screens",
+  "mobile_version": "Mobile Version",
+  "optimized_for_mobile": "Optimized for touch devices",
+  "desktop": "Desktop",
+  "mobile": "Mobile",
+  "desktop_desc": "Large screen",
+  "mobile_desc": "Touch device"
 }

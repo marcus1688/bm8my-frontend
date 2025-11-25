@@ -12,6 +12,10 @@ export const useGameLauncher = () => {
   const alertMessage = ref("");
   const alertType = ref("");
 
+  const platformModalVisible = ref(false);
+  const pendingGame = ref(null);
+  const selectedPlatform = ref(null);
+
   const isMobileDevice = () => {
     return window.innerWidth < 1023;
   };
@@ -31,7 +35,19 @@ export const useGameLauncher = () => {
       alertVisible.value = true;
       return;
     }
+
+    if (game?.categoryId?.name === "Sports") {
+      pendingGame.value = game;
+      platformModalVisible.value = true;
+      return;
+    }
+
+    await launchGameWithPlatform(game, isMobileDevice() ? "mobile" : "web");
+  };
+
+  const launchGameWithPlatform = async (game, platform) => {
     gameLoading.value = true;
+
     const getValidGameToken = async () => {
       try {
         let gameToken = localStorage.getItem("gametoken");
@@ -122,7 +138,7 @@ export const useGameLauncher = () => {
       const requestBody = {
         gameLang: $locale.value || "en",
         gameType: game.categoryId.name,
-        clientPlatform: isMobileDevice() ? "mobile" : "web",
+        clientPlatform: platform, // Use the selected platform
       };
 
       if (game.isManualGame) {
@@ -243,6 +259,13 @@ export const useGameLauncher = () => {
     }
   };
 
+  const handlePlatformSelection = async (platform) => {
+    if (pendingGame.value) {
+      await launchGameWithPlatform(pendingGame.value, platform);
+      pendingGame.value = null;
+    }
+  };
+
   return {
     launchGame,
     gameLoading,
@@ -252,5 +275,7 @@ export const useGameLauncher = () => {
     alertTitle,
     alertMessage,
     alertType,
+    platformModalVisible,
+    handlePlatformSelection,
   };
 };

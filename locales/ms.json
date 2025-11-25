@@ -1338,5 +1338,15 @@
   "bank_min_deposit": "Deposit minimum untuk {bank} ialah MYR {min}",
   "bank_max_deposit": "Deposit maksimum untuk {bank} ialah MYR {max}",
   "deposit_limit": "Had deposit",
-  "invitation_only": "Jemputan Sahaja"
+  "invitation_only": "Jemputan Sahaja",
+  "select_platform": "Pilih Platform",
+  "choose_platform_message": "Pilih platform pilihan anda untuk melancarkan permainan",
+  "desktop_version": "Versi Desktop",
+  "optimized_for_desktop": "Dioptimumkan untuk skrin besar",
+  "mobile_version": "Versi Mudah Alih",
+  "optimized_for_mobile": "Dioptimumkan untuk peranti sentuh",
+  "desktop": "Desktop",
+  "mobile": "Mobile",
+  "desktop_desc": "Skrin besar",
+  "mobile_desc": "Peranti sentuh"
 }

@@ -14,7 +14,11 @@
       :type="alertType"
       @close="alertVisible = false"
     />
-
+    <GamePlatformModal
+      :isVisible="platformModalVisible"
+      @close="platformModalVisible = false"
+      @selectPlatform="handlePlatformSelection"
+    />
     <div>
       <header
         class="relative w-full h-[80px] max-lg:h-[60px] py-2 border-b-2 border-red-600 z-50"
@@ -2480,8 +2484,15 @@ const showCountryMenu = ref(false);
 const showCountryMenuMobile = ref(false);
 const showBalanceDropdown = ref(false);
 const { post, get } = useApiEndpoint();
-const { launchGame, alertVisible, alertTitle, alertMessage, alertType } =
-  useGameLauncher();
+const {
+  launchGame,
+  alertVisible,
+  alertTitle,
+  alertMessage,
+  alertType,
+  platformModalVisible,
+  handlePlatformSelection,
+} = useGameLauncher();
 const unreadCount = useState("unreadCount");
 const generalSetting = useState("generalSetting");
 const liveCasinoKiosks = useState("liveCasinoKiosks");

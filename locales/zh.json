@@ -1338,5 +1338,15 @@
   "bank_min_deposit": "{bank} 的最低存款金额为 MYR {min}",
   "bank_max_deposit": "{bank} 的最高存款金额为 MYR {max}",
   "deposit_limit": "存款限额",
-  "invitation_only": "仅限邀请"
+  "invitation_only": "仅限邀请",
+  "select_platform": "选择平台",
+  "choose_platform_message": "选择您喜欢的平台来启动游戏",
+  "desktop_version": "桌面版本",
+  "optimized_for_desktop": "为大屏幕优化",
+  "mobile_version": "手机版本",
+  "optimized_for_mobile": "为触摸设备优化",
+  "desktop": "桌面版",
+  "mobile": "手机版",
+  "desktop_desc": "大屏幕",
+  "mobile_desc": "触控设备"
 }

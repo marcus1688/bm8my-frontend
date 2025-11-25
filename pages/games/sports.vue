@@ -7,6 +7,12 @@
       :type="alertType"
       @close="alertVisible = false"
     />
+
+    <GamePlatformModal
+      :isVisible="platformModalVisible"
+      @close="platformModalVisible = false"
+      @selectPlatform="handlePlatformSelection"
+    />
     <div>
       <section
         class="relative max-lg:max-w-[100vw] shadow-lg shadow-red-600/20"
@@ -81,8 +87,15 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
-const { launchGame, alertVisible, alertTitle, alertMessage, alertType } =
-  useGameLauncher();
+const {
+  launchGame,
+  alertVisible,
+  alertTitle,
+  alertMessage,
+  alertType,
+  platformModalVisible,
+  handlePlatformSelection,
+} = useGameLauncher();
 const sportsKiosks = useState("sportsKiosks");
 const userGameLocks = useState("userGameLocks");
 const isUserLoggedIn = useState("isUserLoggedIn");

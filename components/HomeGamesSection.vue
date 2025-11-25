@@ -6,6 +6,11 @@
     :type="alertType"
     @close="alertVisible = false"
   />
+  <GamePlatformModal
+    :isVisible="platformModalVisible"
+    @close="platformModalVisible = false"
+    @selectPlatform="handlePlatformSelection"
+  />
   <section class="py-8 containerWid max-lg:py-2">
     <div class="mx-auto px-4 max-lg:px-2">
       <!-- Mobile Category Navigation -->
@@ -185,8 +190,15 @@
 </template>
 
 <script setup>
-const { launchGame, alertVisible, alertTitle, alertMessage, alertType } =
-  useGameLauncher();
+const {
+  launchGame,
+  alertVisible,
+  alertTitle,
+  alertMessage,
+  alertType,
+  platformModalVisible,
+  handlePlatformSelection,
+} = useGameLauncher();
 const liveCasinoKiosks = useState("liveCasinoKiosks");
 const slotKiosks = useState("slotKiosks");
 const sportsKiosks = useState("sportsKiosks");
