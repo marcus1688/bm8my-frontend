@@ -14,11 +14,11 @@
             v-if="post"
             class="overflow-hidden max-h-max flex flex-col gap-4"
           >
-            <div class="relative">
+            <div class="relative aspect-[1200/480]">
               <img
                 :src="post.image"
                 alt="Blog Image"
-                class="w-full h-60 object-cover rounded-lg border border-[#3b1c23]"
+                class="w-full h-full object-cover rounded-lg border border-[#3b1c23]"
               />
             </div>
 
@@ -94,11 +94,11 @@
                 class="bg-[#241017]/60 border !border-[#3b1c23] rounded-lg overflow-hidden cursor-pointer transition duration-300 ease-in-out transform lg:hover:scale-105 lg:hover:shadow-[0_0_10px_rgba(255,51,68,0.4)]"
                 @click="navigateToArticle(article.slug)"
               >
-                <div class="relative">
+                <div class="relative aspect-[1200/480]">
                   <img
                     :src="article.image"
                     alt="Article Image"
-                    class="w-full h-32 object-cover"
+                    class="w-full h-full object-cover"
                   />
                 </div>
                 <div class="p-4">

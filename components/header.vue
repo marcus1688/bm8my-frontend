@@ -47,7 +47,7 @@
                   <img
                     :src="generalSetting.logoimage"
                     alt="Logo"
-                    class="w-16 h-auto"
+                    class="w-16 h-auto max-lg:w-20"
                   />
                 </NuxtLinkLocale>
               </div>

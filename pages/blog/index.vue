@@ -42,11 +42,11 @@
           class="bg-[#241017]/60 rounded-xl shadow-lg shadow-red-500/20 overflow-hidden cursor-pointer transition duration-300 ease-in-out transform lg:hover:scale-105 lg:hover:shadow-[#ff3344]/20 border border-[#3b1c23]"
           @click="navigateToArticle(post.slug)"
         >
-          <div class="relative">
+          <div class="relative aspect-[1200/480]">
             <img
               :src="post.image"
               alt="Blog Image"
-              class="w-full h-40 object-cover"
+              class="w-full h-full object-cover"
             />
           </div>
           <div class="!p-4 flex flex-col h-[180px]">
