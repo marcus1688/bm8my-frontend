@@ -242,9 +242,32 @@ const goBack = () => {
   const localePath = useLocalePath();
   router.push(localePath("/blog"));
 };
+
+onMounted(() => {
+  const tables = document.querySelectorAll(".blog-content table");
+  tables.forEach((table) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "table-wrapper";
+    table.parentNode.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  });
+});
 </script>
 
 <style>
+.blog-content .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5em 0;
+}
+
+.blog-content .table-wrapper table {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  min-width: 600px;
+}
+
 .blog-content {
   color: #f0eaea;
   line-height: 1.7;
