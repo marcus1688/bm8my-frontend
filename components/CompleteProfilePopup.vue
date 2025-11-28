@@ -19,7 +19,6 @@
           </div>
 
           <div class="p-4 space-y-4">
-            <!-- Full Name -->
             <div>
               <label class="block text-xs font-semibold text-[#f0eaea] mb-1.5">
                 {{ $t("fullname") }} <span class="text-red-500">*</span>
@@ -32,7 +31,6 @@
               />
             </div>
 
-            <!-- Phone Number -->
             <div>
               <label class="block text-xs font-semibold text-[#f0eaea] mb-1.5">
                 {{ $t("mobile_number") }} <span class="text-red-500">*</span>
