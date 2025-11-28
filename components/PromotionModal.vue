@@ -8,7 +8,7 @@
       >
         <div
           v-show="show"
-          class="bg-[#15090e] border border-[#3b1c23] rounded-xl shadow-2xl max-w-4xl w-full overflow-hidden max-h-[70vh] flex flex-col"
+          class="bg-[#15090e] border border-[#3b1c23] rounded-xl shadow-2xl max-w-[800px] w-full overflow-hidden max-h-[70vh] flex flex-col"
           :class="show ? 'animate-popupIn' : 'animate-popupOut'"
           role="dialog"
           aria-modal="true"
@@ -235,7 +235,6 @@ onBeforeUnmount(() => {
 }
 
 :deep(.promotion-content p) {
-  margin-bottom: 1rem;
   color: #f0eaea;
   line-height: 1.6;
 }
@@ -272,6 +271,8 @@ onBeforeUnmount(() => {
 
 :deep(.promotion-content h3) {
   font-size: 1.125rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 :deep(.promotion-content hr) {
