@@ -394,7 +394,7 @@
                             <p
                               class="font-medium text-[#f0eaea] max-md:text-sm"
                             >
-                              {{ userData.lionKingGameID }}
+                              {{ userData[currentKiosk.databaseGameID] }}
                             </p>
                           </div>
                         </div>
@@ -777,12 +777,16 @@
                             <p
                               class="font-medium text-[#f0eaea] max-md:text-sm"
                             >
-                              {{ userData.gw99GameID }}
+                              {{ userData[currentKiosk.databaseGameID] }}
                             </p>
                           </div>
                         </div>
                         <button
-                          @click="copyToClipboard(userData.gw99GameID)"
+                          @click="
+                            copyToClipboard(
+                              userData[currentKiosk.databaseGameID]
+                            )
+                          "
                           class="text-[#ff3344] lg:hover:text-[#f0eaea]"
                         >
                           <i class="bi bi-clipboard text-lg"></i>
@@ -807,12 +811,16 @@
                             <p
                               class="font-medium text-[#f0eaea] max-md:text-sm"
                             >
-                              {{ userData.gw99GamePW }}
+                              {{ userData[currentKiosk.databaseGamePassword] }}
                             </p>
                           </div>
                         </div>
                         <button
-                          @click="copyToClipboard(userData.gw99GamePW)"
+                          @click="
+                            copyToClipboard(
+                              userData[currentKiosk.databaseGamePassword]
+                            )
+                          "
                           class="text-[#ff3344] lg:hover:text-[#f0eaea]"
                         >
                           <i class="bi bi-clipboard text-lg"></i>
@@ -1134,24 +1142,22 @@ const loadingMessage = ref("");
 const scrollToElement = inject("scrollToElement");
 
 const hasGameAccount = computed(() => {
-  if (!userData.value) return false;
+  if (!userData.value || !currentKiosk.value) return false;
 
-  // Check for GW99 game account (Manual Game)
-  if (currentKiosk.value?.isManualGame) {
-    return userData.value.gw99GameID && userData.value.gw99GamePW;
+  const gameIDField = currentKiosk.value.databaseGameID;
+  const gamePWField = currentKiosk.value.databaseGamePassword;
+
+  if (currentKiosk.value.isManualGame) {
+    return !!(userData.value[gameIDField] && userData.value[gamePWField]);
   }
 
-  // Check for LionKing game account (HTML Game)
-  if (currentKiosk.value?.isHTMLGame) {
-    return userData.value.lionKingGameID;
+  if (currentKiosk.value.isHTMLGame) {
+    return !!userData.value[gameIDField];
   }
 
-  // For other game types, check both (fallback)
-  return (
-    (userData.value.gw99GameID && userData.value.gw99GamePW) ||
-    userData.value.lionKingGameID
-  );
+  return !!(userData.value[gameIDField] && userData.value[gamePWField]);
 });
+
 const { showAlert } = useAlert();
 const gameBalance = ref("0.00");
 const isBalanceLoading = ref(false);
@@ -1330,10 +1336,17 @@ const totalPages = computed(() => {
 const selectGame = async (game) => {
   if (currentKiosk.value?._id === game._id) return;
   pageLoading.value = true;
+  gameBalance.value = "0.00";
   currentKiosk.value = game;
   try {
     if (game.gameListLink) {
       await fetchGameList(game.gameListLink);
+    }
+    if (game.isManualGame || game.isHTMLGame) {
+      await fetchUserData();
+      if (hasGameAccount.value) {
+        await fetchGameBalance();
+      }
     }
   } catch (error) {
     console.error("Error selecting game:", error);
@@ -1479,15 +1492,10 @@ onMounted(async () => {
     }
     if (
       currentKiosk.value &&
-      currentKiosk.value.isManualGame &&
-      currentKiosk.value.isHTMLGame
+      (currentKiosk.value.isManualGame || currentKiosk.value.isHTMLGame) &&
+      hasGameAccount.value
     ) {
-      if (!hasGameAccount.value) {
-        await fetchUserData();
-      }
-      if (hasGameAccount.value) {
-        await fetchGameBalance();
-      }
+      await fetchGameBalance();
     }
   } catch (error) {
     console.error("Error during initial page load:", error);
@@ -1520,11 +1528,13 @@ watch([searchTerm, sortOption], () => {
 
 watch(
   currentKiosk,
-  async (newKiosk) => {
-    if (newKiosk && newKiosk.isManualGame && newKiosk.isHTMLGame) {
-      if (!hasGameAccount.value) {
-        await fetchUserData();
-      }
+  async (newKiosk, oldKiosk) => {
+    if (!newKiosk || newKiosk._id === oldKiosk?._id) return;
+
+    gameBalance.value = "0.00";
+
+    if (newKiosk.isManualGame || newKiosk.isHTMLGame) {
+      await fetchUserData();
       if (hasGameAccount.value) {
         await fetchGameBalance();
       }
