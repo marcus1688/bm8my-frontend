@@ -25,12 +25,22 @@ const props = defineProps({
   },
 });
 
-const config = useRuntimeConfig();
 const { post } = useApiEndpoint();
 const router = useRouter();
 const localePath = useLocalePath();
 const pageLoading = useState("pageLoading");
 const { showAlert, alertVisible } = useAlert();
+
+const getBotId = () => {
+  if (!process.client) return "8563523697";
+  const hostname = window.location.hostname;
+  if (hostname.includes("bm8my.com")) {
+    return "8444676449";
+  }
+  return "8563523697";
+};
+
+const botId = getBotId();
 
 const handleTelegramAuth = async (user) => {
   pageLoading.value = true;
@@ -44,6 +54,7 @@ const handleTelegramAuth = async (user) => {
       auth_date: user.auth_date,
       hash: user.hash,
       referralCode: props.referralCode,
+      bot_id: botId,
     });
     if (data.success) {
       localStorage.setItem("token", data.token);
@@ -85,7 +96,7 @@ const triggerTelegramLogin = () => {
   }
   window.Telegram.Login.auth(
     {
-      bot_id: config.public.telegramBotId,
+      bot_id: botId,
       request_access: true,
     },
     (data) => {

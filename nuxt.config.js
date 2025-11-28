@@ -71,8 +71,6 @@ export default defineNuxtConfig({
       apiUrl: APIURL,
       googleClientId:
         "1083167078252-ahld76fsgas145iv3790f2e6493ud3rk.apps.googleusercontent.com",
-      telegramBotUsername: "bm8login_bot",
-      telegramBotId: "8553763158",
     },
   },
 
