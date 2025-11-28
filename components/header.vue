@@ -1187,7 +1187,7 @@
                     @click="launchGame(game)"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         v-if="isGameLocked(game.databaseName)"
@@ -1201,7 +1201,7 @@
                       <img
                         :src="game.icon || fallback(game.name)"
                         :alt="game.name"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -1219,7 +1219,7 @@
                     @click="launchGame(game)"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         v-if="isGameLocked(game.databaseName)"
@@ -1232,7 +1232,7 @@
                       <img
                         :src="game.icon || fallback(game.name)"
                         :alt="game.name"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -1250,7 +1250,7 @@
                     @click="launchGame(game)"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         v-if="isGameLocked(game.databaseName)"
@@ -1263,7 +1263,7 @@
                       <img
                         :src="game.icon || fallback(game.name)"
                         :alt="game.name"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -1282,7 +1282,7 @@
                     @click="launchGame(game)"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         v-if="isGameLocked(game.databaseName)"
@@ -1295,7 +1295,7 @@
                       <img
                         :src="game.icon || fallback(game.name)"
                         :alt="game.name"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -1311,7 +1311,7 @@
                     class="game-item group cursor-pointer relative block h-full"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         class="inactive-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 pointer-events-none z-10"
@@ -1320,7 +1320,7 @@
                       <img
                         src="/images/logo/view_more.png"
                         alt="View More"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                       <div
                         class="absolute inset-0 flex flex-col items-center justify-center text-center p-4 z-5"
@@ -1350,7 +1350,7 @@
                     @click="launchGame(game)"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         v-if="isGameLocked(game.databaseName)"
@@ -1363,7 +1363,7 @@
                       <img
                         :src="game.icon || fallback(game.name)"
                         :alt="game.name"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -1381,7 +1381,7 @@
                     @click="launchGame(game)"
                   >
                     <div
-                      class="aspect-[3/4] flex items-center justify-center relative overflow-hidden transition-all duration-300"
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
                     >
                       <div
                         v-if="isGameLocked(game.databaseName)"
@@ -1394,7 +1394,7 @@
                       <img
                         :src="game.icon || fallback(game.name)"
                         :alt="game.name"
-                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-110"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
                       />
                     </div>
                   </div>

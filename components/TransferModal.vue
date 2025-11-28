@@ -1,143 +1,160 @@
 <template>
-  <div
-    class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 max-lg:px-4"
-    @click.self="emitClose"
-  >
-    <div
-      class="bg-[#1A0D13] border border-[#3b1c23] text-[#f0eaea] rounded-xl w-1/3 p-6 shadow-2xl shadow-[#ff3344]/20 transform transition-transform scale-95 max-lg:w-full"
-      role="dialog"
-      aria-modal="true"
-    >
+  <Teleport to="body">
+    <Transition name="fade">
       <div
-        class="flex justify-between items-center mb-4 border-b border-[#3b1c23] pb-3"
+        v-if="isVisible"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[99] p-4"
+        @click.self="emitClose"
       >
-        <h2 class="text-xl font-semibold text-[#f0eaea]">
-          {{ $t("transfer_funds") }}
-        </h2>
-        <button
-          @click="emitClose"
-          class="text-[#b37a7a] lg:hover:text-[#ff3344] transition-colors"
+        <div
+          class="bg-[#1A0D13] border border-[#3b1c23] rounded-lg w-full max-w-md overflow-hidden"
+          :class="isVisible ? 'animate-popupIn' : ''"
         >
-          <Icon icon="mdi:close" class="w-5 h-5" />
-        </button>
-      </div>
-
-      <div class="bg-[#241017]/60 border border-[#3b1c23] p-4 rounded-lg mb-6">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center gap-2">
-            <div
-              class="w-8 h-8 bg-[#ff3344]/20 rounded-full flex items-center justify-center text-[#ff3344]"
+          <div
+            class="p-4 border-b border-[#3b1c23] flex items-center justify-between"
+          >
+            <h3 class="font-semibold text-[#f0eaea] text-base max-sm:text-sm">
+              {{ $t("transfer_funds") }}
+            </h3>
+            <button
+              @click="emitClose"
+              class="w-8 h-8 max-sm:w-7 max-sm:h-7 rounded-lg bg-[#241017] border border-[#3b1c23] flex items-center justify-center text-[#b37a7a] lg:hover:text-[#ff3344] lg:hover:border-[#ff3344] transition-all"
             >
-              <i class="bi bi-wallet2"></i>
-            </div>
-            <div>
-              <p class="text-sm text-[#b37a7a]">{{ $t("game_balance") }}</p>
-              <div class="flex items-center">
-                <p class="font-medium text-[#f0eaea]" v-if="!isBalanceLoading">
-                  {{ gameBalance || "0.00" }}
-                </p>
-                <div
-                  v-else
-                  class="w-4 h-4 border-2 border-[#ff3344] border-t-transparent rounded-full animate-spin ml-1"
-                ></div>
+              <Icon icon="mdi:close" class="w-5 h-5 max-sm:w-4 max-sm:h-4" />
+            </button>
+          </div>
+
+          <div class="p-4 space-y-4">
+            <div class="bg-[#241017]/60 border border-[#3b1c23] rounded-lg p-4">
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 bg-[#ff3344]/10 rounded-lg flex items-center justify-center"
+                  >
+                    <i class="bi bi-wallet2 text-lg text-[#ff3344]"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-[#b37a7a] mb-0.5">
+                      {{ $t("game_balance") }}
+                    </p>
+                    <div class="flex items-center">
+                      <p
+                        v-if="!isBalanceLoading"
+                        class="text-base font-bold text-[#f0eaea]"
+                      >
+                        {{ gameBalance || "0.00" }}
+                      </p>
+                      <div v-else class="flex items-center gap-2">
+                        <div
+                          class="w-4 h-4 border-2 border-[#ff3344] border-t-transparent rounded-full animate-spin"
+                        ></div>
+                        <span class="text-sm text-[#8a6b73]">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  @click="refreshBalance"
+                  :disabled="isBalanceLoading"
+                  class="w-9 h-9 bg-[#15090e] rounded-lg border border-[#2a1419] text-[#ff3344] lg:hover:bg-[#1f0e13] transition-all disabled:opacity-50"
+                >
+                  <i
+                    class="bi"
+                    :class="[
+                      isBalanceLoading
+                        ? 'bi-arrow-repeat animate-spin'
+                        : 'bi-arrow-clockwise',
+                    ]"
+                  ></i>
+                </button>
               </div>
             </div>
-          </div>
-          <button
-            @click="refreshBalance"
-            class="text-[#ff3344] lg:hover:text-[#c21b3a] p-1 transition-colors"
-            :disabled="isBalanceLoading"
-          >
-            <i
-              class="bi"
-              :class="[
-                isBalanceLoading
-                  ? 'bi-arrow-repeat animate-spin'
-                  : 'bi-arrow-clockwise',
-              ]"
-            ></i>
-          </button>
-        </div>
-      </div>
 
-      <div class="space-y-6">
-        <div>
-          <label class="block text-sm font-medium text-[#f0eaea] mb-2">
-            {{ $t("transfer_in") }}
-          </label>
-          <div class="relative flex">
-            <input
-              type="number"
-              v-model="transferInAmount"
-              placeholder="0.00"
-              min="0"
-              step="0.01"
-              class="w-full p-3 rounded-l-lg border border-[#3b1c23] bg-[#241017]/60 text-[#f0eaea] placeholder-[#b37a7a] focus:border-[#ff3344] focus:ring-2 focus:ring-[#ff3344]/50 outline-none transition"
-            />
+            <div>
+              <label
+                class="block text-sm max-sm:text-xs font-semibold text-[#f0eaea] mb-1.5"
+              >
+                {{ $t("transfer_in") }}
+              </label>
+              <div class="flex max-[400px]:flex-col gap-2">
+                <input
+                  type="number"
+                  v-model="transferInAmount"
+                  placeholder="0.00"
+                  min="0"
+                  step="0.01"
+                  class="flex-1 px-3 py-2.5 bg-[#15090e] text-[#f0eaea] rounded-lg placeholder-[#b37a7a] border border-[#3b1c23] focus:border-[#ff3344] focus:outline-none transition-all text-sm font-medium"
+                />
+                <button
+                  @click="transferIn"
+                  :disabled="
+                    isTransferInLoading ||
+                    !transferInAmount ||
+                    parseFloat(transferInAmount) <= 0
+                  "
+                  class="px-5 py-2.5 bg-gradient-to-r from-[#a1122d] to-[#c21b3a] text-white rounded-lg font-medium lg:hover:from-[#8e0f25] lg:hover:to-[#a1122d] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[90px] text-sm"
+                >
+                  <span v-if="!isTransferInLoading">{{ $t("transfer") }}</span>
+                  <div
+                    v-else
+                    class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+                  ></div>
+                </button>
+              </div>
+              <p class="text-xs text-[#8a6b73] mt-1.5">
+                {{ $t("transfer_in_description") }}
+              </p>
+            </div>
+
+            <div>
+              <label
+                class="block text-sm max-sm:text-xs font-semibold text-[#f0eaea] mb-1.5"
+              >
+                {{ $t("transfer_out") }}
+              </label>
+              <div class="flex max-[400px]:flex-col gap-2">
+                <input
+                  type="number"
+                  v-model="transferOutAmount"
+                  placeholder="0.00"
+                  min="0"
+                  step="0.01"
+                  class="flex-1 px-3 py-2.5 bg-[#15090e] text-[#f0eaea] rounded-lg placeholder-[#b37a7a] border border-[#3b1c23] focus:border-[#ff3344] focus:outline-none transition-all text-sm font-medium"
+                />
+                <button
+                  @click="transferOut"
+                  :disabled="
+                    isTransferOutLoading ||
+                    !transferOutAmount ||
+                    parseFloat(transferOutAmount) <= 0
+                  "
+                  class="px-5 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg font-medium lg:hover:from-green-700 lg:hover:to-green-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[90px] text-sm"
+                >
+                  <span v-if="!isTransferOutLoading">{{ $t("transfer") }}</span>
+                  <div
+                    v-else
+                    class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+                  ></div>
+                </button>
+              </div>
+              <p class="text-xs text-[#8a6b73] mt-1.5">
+                {{ $t("transfer_out_description") }}
+              </p>
+            </div>
+          </div>
+
+          <div class="p-4 border-t border-[#3b1c23]">
             <button
-              @click="transferIn"
-              :disabled="
-                isTransferInLoading ||
-                !transferInAmount ||
-                parseFloat(transferInAmount) <= 0
-              "
-              class="bg-gradient-to-r from-[#a1122d] to-[#c21b3a] text-white px-4 py-2 rounded-r-lg lg:hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[80px] shadow-lg shadow-[#ff3344]/30"
+              @click="emitClose"
+              class="w-full py-2.5 bg-[#241017] border border-[#3b1c23] text-[#f0eaea] rounded-lg font-medium lg:hover:border-[#ff3344]/50 transition-all text-sm max-sm:text-xs"
             >
-              <span v-if="!isTransferInLoading">{{ $t("transfer") }}</span>
-              <div
-                v-else
-                class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
-              ></div>
+              {{ $t("close") }}
             </button>
           </div>
-          <p class="text-xs text-[#b37a7a] mt-1">
-            {{ $t("transfer_in_description") }}
-          </p>
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-[#f0eaea] mb-2">
-            {{ $t("transfer_out") }}
-          </label>
-          <div class="relative flex">
-            <input
-              type="number"
-              v-model="transferOutAmount"
-              placeholder="0.00"
-              min="0"
-              step="0.01"
-              class="w-full p-3 rounded-l-lg border border-[#3b1c23] bg-[#241017]/60 text-[#f0eaea] placeholder-[#b37a7a] focus:border-[#ff3344] focus:ring-2 focus:ring-[#ff3344]/50 outline-none transition"
-            />
-            <button
-              @click="transferOut"
-              :disabled="
-                isTransferOutLoading ||
-                !transferOutAmount ||
-                parseFloat(transferOutAmount) <= 0
-              "
-              class="bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-2 rounded-r-lg lg:hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[80px] shadow-lg"
-            >
-              <span v-if="!isTransferOutLoading">{{ $t("transfer") }}</span>
-              <div
-                v-else
-                class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
-              ></div>
-            </button>
-          </div>
-          <p class="text-xs text-[#b37a7a] mt-1">
-            {{ $t("transfer_out_description") }}
-          </p>
         </div>
       </div>
-      <div class="flex justify-end mt-6">
-        <button
-          @click="emitClose"
-          class="px-4 py-2 bg-[#241017]/60 text-[#f0eaea] rounded-lg lg:hover:bg-[#3b1c23] transition border border-[#3b1c23]"
-        >
-          {{ $t("close") }}
-        </button>
-      </div>
-    </div>
-  </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup>
@@ -155,18 +172,23 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["close", "balanceUpdated"]);
+
+const isVisible = ref(true);
 const gameBalance = ref(props.currentBalance);
 const transferInAmount = ref("");
 const transferOutAmount = ref("");
 const isBalanceLoading = ref(false);
 const isTransferInLoading = ref(false);
 const isTransferOutLoading = ref(false);
-const gameName = computed(() => props.gameInfo?.name || "Game");
+
 const { post } = useApiEndpoint();
 const { showAlert } = useAlert();
 
 function emitClose() {
-  emit("close");
+  isVisible.value = false;
+  setTimeout(() => {
+    emit("close");
+  }, 300);
 }
 
 async function refreshBalance() {
@@ -179,11 +201,17 @@ async function refreshBalance() {
     const { data } = await post(props.gameInfo.balanceAPI);
     if (data.success) {
       gameBalance.value = data.balance || "0.00";
+      emit("balanceUpdated");
     } else {
-      throw new Error(data.message || "Failed to fetch balance");
+      showAlert(
+        $t("alert_info"),
+        data.message[$locale.value] || data.message.en,
+        "info"
+      );
     }
   } catch (error) {
     console.error("Error fetching balance:", error);
+    showAlert($t("alert_error"), $t("failed_fetch_balance"), "error");
   } finally {
     isBalanceLoading.value = false;
   }
@@ -191,11 +219,11 @@ async function refreshBalance() {
 
 async function transferIn() {
   if (!props.gameInfo || !props.gameInfo.transferInAPI) {
-    showAlert($t("alert_info"), $t("transfer_in_api_unavailable"), "error");
+    showAlert($t("alert_info"), $t("transfer_in_api_unavailable"), "info");
     return;
   }
   if (!transferInAmount.value || parseFloat(transferInAmount.value) <= 0) {
-    showAlert($t("alert_info"), $t("valid_amount"), "error");
+    showAlert($t("alert_info"), $t("valid_amount"), "info");
     return;
   }
   isTransferInLoading.value = true;
@@ -207,7 +235,6 @@ async function transferIn() {
       showAlert($t("alert_success"), $t("transfer_in_successful"), "success");
       transferInAmount.value = "";
       await refreshBalance();
-      emit("balanceUpdated");
     } else {
       showAlert(
         $t("alert_info"),
@@ -229,11 +256,11 @@ async function transferIn() {
 
 async function transferOut() {
   if (!props.gameInfo || !props.gameInfo.transferOutAPI) {
-    showAlert($t("alert_info"), $t("transfer_out_api_unavailable"), "error");
+    showAlert($t("alert_info"), $t("transfer_out_api_unavailable"), "info");
     return;
   }
   if (!transferOutAmount.value || parseFloat(transferOutAmount.value) <= 0) {
-    showAlert($t("alert_success"), $t("valid_amount"), "error");
+    showAlert($t("alert_info"), $t("valid_amount"), "info");
     return;
   }
   isTransferOutLoading.value = true;
@@ -245,7 +272,6 @@ async function transferOut() {
       showAlert($t("alert_success"), $t("transfer_out_successful"), "success");
       transferOutAmount.value = "";
       await refreshBalance();
-      emit("balanceUpdated");
     } else {
       showAlert(
         $t("alert_info"),
@@ -271,6 +297,34 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Popup animation */
+@keyframes popupIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-popupIn {
+  animation: popupIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Spin animation */
 @keyframes spin {
   from {
     transform: rotate(0deg);
