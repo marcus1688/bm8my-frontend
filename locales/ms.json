@@ -1348,5 +1348,6 @@
   "desktop": "Desktop",
   "mobile": "Mobile",
   "desktop_desc": "Skrin besar",
-  "mobile_desc": "Peranti sentuh"
+  "mobile_desc": "Peranti sentuh",
+  "game_wallets": "Dompet Permainan"
 }

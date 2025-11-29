@@ -82,9 +82,16 @@
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
                 <div
-                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center"
+                  class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden"
                 >
-                  <span class="font-bold text-xs text-gray-300">
+                  <!-- ✅ Show image if found, otherwise show text -->
+                  <img
+                    v-if="getGameIcon(game.game)"
+                    :src="getGameIcon(game.game)"
+                    :alt="game.game"
+                    class="w-full h-full object-contain"
+                  />
+                  <span v-else class="font-bold text-xs text-gray-300">
                     {{ game.game.substring(0, 2).toUpperCase() }}
                   </span>
                 </div>
@@ -154,6 +161,7 @@
 const emit = defineEmits(["close"]);
 const userData = useState("userData");
 const generalSetting = useState("generalSetting");
+const slotKiosks = useState("slotKiosks");
 const { showAlert } = useAlert();
 const { get, post } = useApiEndpoint();
 const gameBalances = ref([]);
@@ -161,6 +169,13 @@ let gameTotalBalances = ref(0);
 const isLoading = ref(false);
 const dropdownTimer = ref(null);
 const mouseOverDropdown = ref(false);
+
+const getGameIcon = (gameName) => {
+  const kiosk = slotKiosks.value.find(
+    (k) => k.name.toLowerCase() === gameName.toLowerCase()
+  );
+  return kiosk?.banner || kiosk?.logo || null;
+};
 
 const totalBalance = computed(() => {
   let total = userData.value.wallet || 0;

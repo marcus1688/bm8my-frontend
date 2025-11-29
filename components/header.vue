@@ -1775,101 +1775,133 @@
                     </span>
                   </div>
 
-                  <div class="flex-1 px-4 py-4 overflow-y-auto">
+                  <div class="flex-1 overflow-y-auto scrollbar-thin">
                     <div v-if="isBalancePanelLoading" class="py-12">
                       <div class="flex flex-col items-center justify-center">
                         <div class="relative w-10 h-10 mb-3">
                           <div
-                            class="absolute inset-0 border-2 border-white/10 rounded-full"
+                            class="absolute inset-0 border-2 border-[#3b1c23] rounded-full"
                           ></div>
                           <div
-                            class="absolute inset-0 border-t-2 border-[#ff3344] rounded-full animate-spin"
+                            class="absolute inset-0 border-t-2 border-[#5a2530] rounded-full animate-spin"
                           ></div>
                         </div>
-                        <p class="text-[#f0eaea] font-medium text-sm mb-1">
+                        <p class="text-[#f0eaea] font-medium text-sm">
                           {{ $t("loading_balances") }}
                         </p>
                       </div>
                     </div>
 
                     <div v-if="!isBalancePanelLoading">
-                      <!-- Main Wallet -->
-                      <div
-                        class="mb-4 p-3 bg-[#ff3344]/10 rounded-lg border border-[#ff3344]/30"
-                      >
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center gap-3">
-                            <img
-                              :src="generalSetting.logoimage"
-                              alt=""
-                              class="w-8"
-                            />
-                            <div>
-                              <p class="text-sm font-semibold text-[#f0eaea]">
-                                {{ $t("main_wallet") }}
-                              </p>
-                              <p class="text-xs text-[#b37a7a]">
-                                {{ $t("main_balance") }}
-                              </p>
-                            </div>
-                          </div>
-                          <span class="font-semibold text-[#ff3344] text-base">
-                            {{ userData.wallet.toFixed(2) }}
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Game Balances -->
-                      <div class="space-y-2">
+                      <!-- Main Wallet Section -->
+                      <div class="p-4 border-b border-[#3b1c23]">
                         <div
-                          v-for="game in panelGameBalances"
-                          :key="game.game"
-                          class="p-3 bg-[#241017]/60 rounded-lg border border-[#3b1c23]"
+                          class="p-3.5 bg-[#15090e] rounded-lg border border-[#3b1c23]"
                         >
                           <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                               <div
-                                class="w-10 h-10 rounded-lg bg-[#15090e] border border-[#3b1c23] flex items-center justify-center"
+                                class="w-10 h-10 rounded-lg bg-[#241017] border border-[#3b1c23] flex items-center justify-center p-2"
                               >
-                                <span class="font-bold text-xs text-[#f0eaea]">
-                                  {{ game.game.substring(0, 2).toUpperCase() }}
-                                </span>
+                                <img
+                                  :src="generalSetting.logoimage"
+                                  alt=""
+                                  class="w-full h-full object-contain"
+                                />
                               </div>
                               <div>
-                                <p class="text-sm font-medium text-[#f0eaea]">
-                                  {{ game.game }}
+                                <p class="text-xs text-[#8a6b73] font-medium">
+                                  {{ $t("main_wallet") }}
                                 </p>
-                                <p class="text-xs text-[#b37a7a]">
-                                  {{ $t("game_balance") }}
+                                <p
+                                  class="text-base font-bold text-[#f0eaea] tabular-nums mt-0.5"
+                                >
+                                  {{ userData.wallet.toFixed(2) }}
                                 </p>
                               </div>
                             </div>
-                            <span class="font-medium text-[#f0eaea] text-sm">
-                              {{ parseFloat(game.balance || 0).toFixed(2) }}
-                            </span>
                           </div>
                         </div>
                       </div>
 
-                      <!-- Total Balance -->
-                      <div
-                        class="mt-4 p-3 bg-[#15090e] rounded-lg border border-[#3b1c23]"
-                      >
-                        <div class="flex justify-between items-center">
-                          <span class="text-sm font-semibold text-[#f0eaea]">{{
-                            $t("total_balance")
-                          }}</span>
-                          <span class="font-bold text-[#ff3344] text-base">{{
-                            panelTotalBalance.toFixed(2)
-                          }}</span>
+                      <!-- Game Wallets Section -->
+                      <div class="p-4">
+                        <div class="flex items-center gap-2 mb-3 px-1">
+                          <div class="h-px flex-1 bg-[#3b1c23]"></div>
+                          <p
+                            class="text-xs font-semibold text-[#8a6b73] uppercase tracking-wider"
+                          >
+                            {{ $t("game_wallets") }}
+                          </p>
+                          <div class="h-px flex-1 bg-[#3b1c23]"></div>
+                        </div>
+
+                        <div class="space-y-2">
+                          <div
+                            v-for="game in panelGameBalances"
+                            :key="game.game"
+                            class="p-3 bg-[#15090e]/50 backdrop-blur-sm rounded-lg border border-[#3b1c23]"
+                          >
+                            <div class="flex items-center justify-between">
+                              <div class="flex items-center gap-3">
+                                <div
+                                  class="w-10 h-10 rounded-lg bg-[#241017] border border-[#3b1c23] flex items-center justify-center overflow-hidden p-1.5"
+                                >
+                                  <img
+                                    v-if="getGameIcon(game.game)"
+                                    :src="getGameIcon(game.game)"
+                                    :alt="game.game"
+                                    class="w-full h-full object-contain"
+                                  />
+                                  <span
+                                    v-else
+                                    class="font-bold text-xs text-[#8a6b73]"
+                                  >
+                                    {{
+                                      game.game.substring(0, 2).toUpperCase()
+                                    }}
+                                  </span>
+                                </div>
+                                <span
+                                  class="text-sm font-medium text-[#f0eaea]"
+                                >
+                                  {{ game.game }}
+                                </span>
+                              </div>
+                              <span
+                                class="font-semibold text-sm text-[#f0eaea] tabular-nums"
+                              >
+                                {{ parseFloat(game.balance || 0).toFixed(2) }}
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
 
-                      <!-- Restore Button -->
+                  <div
+                    v-if="!isBalancePanelLoading"
+                    class="border-t border-[#3b1c23] bg-[#241017]"
+                  >
+                    <div class="px-4 py-3 border-b border-[#3b1c23]">
+                      <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-[#f0eaea]">
+                          {{ $t("total_balance") }}
+                        </span>
+                        <span
+                          class="text-base font-bold text-[#f0eaea] tabular-nums"
+                        >
+                          {{ panelTotalBalance.toFixed(2) }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="p-4">
                       <button
                         @click="refreshPanelBalances"
                         :disabled="isBalancePanelLoading"
-                        class="w-full mt-4 py-2.5 bg-[#ff3344] text-white font-medium rounded-lg lg:hover:bg-[#c21b3a] transition-all flex items-center justify-center gap-2"
+                        class="w-full py-2.5 bg-[#15090e] border border-[#3b1c23] text-[#f0eaea] font-medium rounded-lg flex items-center justify-center gap-2 disabled:opacity-50"
                       >
                         <i class="bi bi-arrow-counterclockwise"></i>
                         {{ $t("restore") }}
@@ -2533,6 +2565,13 @@ const languageOptions = [
   { name: "Malay", flag: "/images/flags/Malaysia.png", code: "ms" },
   { name: "中文", flag: "/images/flags/China.svg", code: "zh" },
 ];
+
+const getGameIcon = (gameName) => {
+  const kiosk = slotKiosks.value.find(
+    (k) => k.name.toLowerCase() === gameName.toLowerCase()
+  );
+  return kiosk?.banner || kiosk?.logo || null;
+};
 
 const changeLocale = async (lang) => {
   await setLocale(lang);

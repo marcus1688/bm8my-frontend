@@ -1347,5 +1347,6 @@
   "desktop": "Desktop",
   "mobile": "Mobile",
   "desktop_desc": "Large screen",
-  "mobile_desc": "Touch device"
+  "mobile_desc": "Touch device",
+  "game_wallets": "Game Wallets"
 }
