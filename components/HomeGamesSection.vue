@@ -11,36 +11,38 @@
     @close="platformModalVisible = false"
     @selectPlatform="handlePlatformSelection"
   />
-  <section class="py-8 containerWid max-lg:py-2">
-    <div class="mx-auto px-4 max-lg:px-2">
+  <section class="py-8 containerWid max-lg:py-2 max-lg:mt-2">
+    <div class="mx-auto px-4 max-lg:px-0">
       <!-- Mobile Category Navigation -->
-      <div class="block lg:hidden mb-6">
-        <div class="grid grid-cols-3 gap-2">
-          <button
-            v-for="(category, index) in categories"
-            :key="category.name"
-            @click="selectCategory(index)"
-            class="group relative py-3 px-2 rounded-lg flex flex-col items-center justify-center gap-1"
-            :class="
-              activeCategory === index
-                ? 'bg-gradient-to-br from-[#ff3344] to-[#cc2a3a] text-white shadow-lg'
-                : 'bg-[#241017] text-[#f0eaea] border border-[#3b1c23]'
-            "
-          >
-            <img
-              :src="
+      <div class="block lg:hidden mb-4">
+        <div class="bg-[#241017] border border-[#3b1c23] rounded-xl p-2">
+          <div class="flex justify-between">
+            <button
+              v-for="(category, index) in categories"
+              :key="category.name"
+              @click="selectCategory(index)"
+              class="flex flex-col items-center gap-1 py-1 px-1 rounded-lg flex-1 transition-all duration-200"
+              :class="
                 activeCategory === index
-                  ? category.iconActive
-                  : category.iconInactive
+                  ? 'bg-gradient-to-br from-[#ff3344] to-[#cc2a3a] text-white'
+                  : 'text-[#b37a7a]'
               "
-              :class="activeCategory === index ? 'brightness-0 invert' : ''"
-              :alt="category.name"
-              class="w-7 h-7 max-sm:w-6 max-sm:h-6 object-contain"
-            />
-            <span class="text-sm max-sm:text-xs font-medium">
-              {{ category.name }}
-            </span>
-          </button>
+            >
+              <img
+                :src="
+                  activeCategory === index
+                    ? category.iconActive
+                    : category.iconInactive
+                "
+                :class="activeCategory === index ? 'brightness-0 invert' : ''"
+                :alt="category.name"
+                class="w-6 h-6 object-contain"
+              />
+              <span class="text-[10px] font-medium whitespace-nowrap">
+                {{ category.name }}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 

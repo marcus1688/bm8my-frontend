@@ -74,22 +74,6 @@
                   <div class="relative text_3">
                     <input
                       type="text"
-                      v-model="form.fullname"
-                      :placeholder="$t('fullname')"
-                      class="w-full h-11 px-8 pl-10 bg-[#15090e]/50 border-0 rounded-lg text-white focus:outline-none placeholder:text-[#b37a7a]"
-                      required
-                    />
-                    <div
-                      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#b37a7a]"
-                    >
-                      <i class="bi bi-person-fill"></i>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="relative text_3">
-                    <input
-                      type="text"
                       v-model="form.username"
                       :placeholder="$t('username')"
                       class="w-full h-11 px-8 pl-10 bg-[#15090e]/50 border-0 rounded-lg text-white focus:outline-none placeholder:text-[#b37a7a]"
@@ -128,6 +112,22 @@
                   </div>
                 </div>
                 <div>
+                  <div class="relative text_3">
+                    <input
+                      type="text"
+                      v-model="form.fullname"
+                      :placeholder="$t('fullname')"
+                      class="w-full h-11 px-8 pl-10 bg-[#15090e]/50 border-0 rounded-lg text-white focus:outline-none placeholder:text-[#b37a7a]"
+                      required
+                    />
+                    <div
+                      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#b37a7a]"
+                    >
+                      <i class="bi bi-person-fill"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="hidden">
                   <div class="relative text_3">
                     <VueDatePicker
                       v-model="form.dob"

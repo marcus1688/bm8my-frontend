@@ -55,15 +55,19 @@
             </NuxtMarquee>
           </div>
         </div>
+        <UserShortcut v-if="userData" class="lg:hidden" />
       </section>
 
       <!-- <LuckySpin v-if="showLuckySpin" @close="showLuckySpin = false" /> -->
+      <div class="lg:hidden"><HomeGamesSection /></div>
       <Sports />
+
       <HomePromotionList />
       <Transaction />
       <!-- <Leaderboard /> -->
       <HomeRegistrationSteps />
-      <HomeGamesSection />
+      <div class="max-lg:hidden"><HomeGamesSection /></div>
+
       <TrustedPartners />
       <HomeTestimonials />
       <HomePopup v-if="shouldShowPopup" :popup-data="activePopup" />
