@@ -1350,5 +1350,7 @@
   "desktop_desc": "Skrin besar",
   "mobile_desc": "Peranti sentuh",
   "game_wallets": "Dompet Permainan",
-  "wallet_balance": "Baki Wallet"
+  "wallet_balance": "Baki Wallet",
+  "big_mystery_prize": "Hadiah Misteri Besar",
+  "big_mystery_prize_desc": "Ganjaran misteri besar "
 }

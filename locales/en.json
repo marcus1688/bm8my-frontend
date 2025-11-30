@@ -1349,5 +1349,7 @@
   "desktop_desc": "Large screen",
   "mobile_desc": "Touch device",
   "game_wallets": "Game Wallets",
-  "wallet_balance": "Wallet Balance"
+  "wallet_balance": "Wallet Balance",
+  "big_mystery_prize": "Big Mystery Prize",
+  "big_mystery_prize_desc": "Mysterious big reward "
 }

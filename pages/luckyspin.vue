@@ -273,17 +273,17 @@
               <h3
                 class="text-lg font-semibold text-[#f0eaea] mb-2 text-center max-lg:text-base max-lg:mb-1"
               >
-                {{ $t("grand_prize") || "Grand Prize" }}
+                {{ $t("big_mystery_prize") || "Big mystery prize" }}
               </h3>
               <p
                 class="text-3xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-2xl"
               >
-                MYR 188
+                MYR ????
               </p>
               <p
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
               >
-                {{ $t("grand_prize_desc") || "Lucky jackpot winner" }}
+                {{ $t("big_mystery_prize_desc") || "big_mystery_prize_desc" }}
               </p>
             </div>
 
@@ -294,6 +294,34 @@
               <div class="flex justify-center mb-4 max-lg:mb-3">
                 <img
                   src="/images/luckyspin/prize-level2.png"
+                  alt="Grand Prize"
+                  class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
+                />
+              </div>
+              <h3
+                class="text-lg font-semibold text-[#f0eaea] mb-2 text-center max-lg:text-base max-lg:mb-1"
+              >
+                {{ $t("grand_prize") || "Grand Prize" }}
+              </h3>
+              <p
+                class="text-2xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-xl"
+              >
+                MYR 188
+              </p>
+              <p
+                class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
+              >
+                {{ $t("grand_prize_desc") || "Lucky jackpot winner" }}
+              </p>
+            </div>
+
+            <!-- Prize 3 - Big Prize -->
+            <div
+              class="bg-[#15090e] rounded-xl p-6 max-lg:p-4 border border-[#3b1c23]/50 hover:border-[#ff3344]/50 transition-all duration-200"
+            >
+              <div class="flex justify-center mb-4 max-lg:mb-3">
+                <img
+                  src="/images/luckyspin/prize-level3.png"
                   alt="Grand Prize"
                   class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
                 />
@@ -315,13 +343,13 @@
               </p>
             </div>
 
-            <!-- Prize 3 - Big Prize -->
+            <!-- Prize 4 - Medium Prize -->
             <div
               class="bg-[#15090e] rounded-xl p-6 max-lg:p-4 border border-[#3b1c23]/50 hover:border-[#ff3344]/50 transition-all duration-200"
             >
               <div class="flex justify-center mb-4 max-lg:mb-3">
                 <img
-                  src="/images/luckyspin/prize-level3.png"
+                  src="/images/luckyspin/prize-level4.png"
                   alt="Grand Prize"
                   class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
                 />
@@ -343,13 +371,13 @@
               </p>
             </div>
 
-            <!-- Prize 4 - Medium Prize -->
+            <!-- Additional Prizes Row -->
             <div
-              class="bg-[#15090e] rounded-xl p-6 max-lg:p-4 border border-[#3b1c23]/50 hover:border-[#ff3344]/50 transition-all duration-200"
+              class="bg-[#15090e] rounded-xl p-6 max-lg:p-4 border border-[#3b1c23]/50 hover:border-[#ff3344]/30 transition-all duration-200"
             >
               <div class="flex justify-center mb-4 max-lg:mb-3">
                 <img
-                  src="/images/luckyspin/prize-level4.png"
+                  src="/images/luckyspin/prize-level5.png"
                   alt="Grand Prize"
                   class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
                 />
@@ -360,7 +388,7 @@
                 {{ $t("medium_prize") || "Medium Prize" }}
               </h3>
               <p
-                class="text-2xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-xl"
+                class="text-xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-lg"
               >
                 MYR 18
               </p>
@@ -371,13 +399,12 @@
               </p>
             </div>
 
-            <!-- Additional Prizes Row -->
             <div
               class="bg-[#15090e] rounded-xl p-6 max-lg:p-4 border border-[#3b1c23]/50 hover:border-[#ff3344]/30 transition-all duration-200"
             >
               <div class="flex justify-center mb-4 max-lg:mb-3">
                 <img
-                  src="/images/luckyspin/prize-level5.png"
+                  src="/images/luckyspin/prize-level6.png"
                   alt="Grand Prize"
                   class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
                 />
@@ -404,7 +431,7 @@
             >
               <div class="flex justify-center mb-4 max-lg:mb-3">
                 <img
-                  src="/images/luckyspin/prize-level6.png"
+                  src="/images/luckyspin/prize-level7.png"
                   alt="Grand Prize"
                   class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
                 />
@@ -431,7 +458,7 @@
             >
               <div class="flex justify-center mb-4 max-lg:mb-3">
                 <img
-                  src="/images/luckyspin/prize-level7.png"
+                  src="/images/luckyspin/prize-level8.png"
                   alt="Grand Prize"
                   class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
                 />
@@ -442,7 +469,7 @@
                 {{ $t("tiny_prize") || "Tiny Prize" }}
               </h3>
               <p
-                class="text-xl font-bold text-[#ff3344] text-center mb-2 max-lg:text-lg"
+                class="text-xl font-bold text-[#b37a7a] text-center mb-2 max-lg:text-lg"
               >
                 MYR 3
               </p>
@@ -450,33 +477,6 @@
                 class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
               >
                 {{ $t("tiny_prize_desc") || "Consolation prize" }}
-              </p>
-            </div>
-
-            <div
-              class="bg-[#15090e] rounded-xl p-6 max-lg:p-4 border border-[#3b1c23]/50 hover:border-[#ff3344]/30 transition-all duration-200"
-            >
-              <div class="flex justify-center mb-4 max-lg:mb-3">
-                <img
-                  src="/images/luckyspin/prize-level8.png"
-                  alt="Grand Prize"
-                  class="w-20 h-20 max-lg:w-16 max-lg:h-16 object-contain"
-                />
-              </div>
-              <h3
-                class="text-lg font-semibold text-[#f0eaea] mb-2 text-center max-lg:text-base max-lg:mb-1"
-              >
-                {{ $t("better_luck_next_time") || "Better Luck" }}
-              </h3>
-              <p
-                class="text-xl font-bold text-[#b37a7a] text-center mb-2 max-lg:text-lg"
-              >
-                MYR 0
-              </p>
-              <p
-                class="text-sm text-[#b37a7a] text-center leading-relaxed max-lg:text-xs"
-              >
-                {{ $t("try_again") || "Try again next time" }}
               </p>
             </div>
           </div>

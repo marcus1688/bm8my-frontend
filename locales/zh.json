@@ -1350,5 +1350,7 @@
   "desktop_desc": "大屏幕",
   "mobile_desc": "触控设备",
   "game_wallets": "游戏钱包",
-  "wallet_balance": "钱包余额"
+  "wallet_balance": "钱包余额",
+  "big_mystery_prize": "神秘大奖",
+  "big_mystery_prize_desc": "神秘惊喜等着你"
 }
