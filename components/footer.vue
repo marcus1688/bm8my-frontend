@@ -197,7 +197,9 @@
                 class="bg-[#241017]/60 lg:hover:bg-gradient-to-br lg:hover:from-[#a1122d] lg:hover:to-[#c21b3a] w-10 h-10 max-lg:w-9 max-lg:h-9 rounded-lg flex items-center justify-center transition-all duration-300 border border-[#3b1c23] lg:hover:border-[#ff3344] lg:hover:shadow-lg lg:hover:shadow-[#ff3344]/20"
                 aria-label="YouTube"
               >
-                <i class="bi bi-youtube text-base max-lg:text-sm"></i>
+                <i
+                  class="bi bi-youtube text-base max-lg:text-sm text-red-600"
+                ></i>
               </a>
               <a
                 v-if="generalSetting.whatsapp"
