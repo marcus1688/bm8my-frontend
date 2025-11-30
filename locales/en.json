@@ -1348,5 +1348,6 @@
   "mobile": "Mobile",
   "desktop_desc": "Large screen",
   "mobile_desc": "Touch device",
-  "game_wallets": "Game Wallets"
+  "game_wallets": "Game Wallets",
+  "wallet_balance": "Wallet Balance"
 }

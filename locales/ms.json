@@ -1349,5 +1349,6 @@
   "mobile": "Mobile",
   "desktop_desc": "Skrin besar",
   "mobile_desc": "Peranti sentuh",
-  "game_wallets": "Dompet Permainan"
+  "game_wallets": "Dompet Permainan",
+  "wallet_balance": "Baki Wallet"
 }
