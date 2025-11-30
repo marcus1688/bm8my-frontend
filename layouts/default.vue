@@ -34,10 +34,7 @@
         <div class="max-lg:hidden" v-if="!excludeNavigationFooter">
           <Footer />
         </div>
-        <div
-          class="lg:hidden"
-          v-if="!isUserLoggedIn && !excludeNavigationFooter"
-        >
+        <div class="lg:hidden" v-if="!excludeNavigationFooter">
           <Footer />
         </div>
       </div>
