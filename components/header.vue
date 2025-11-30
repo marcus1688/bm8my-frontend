@@ -142,7 +142,11 @@
                     <div
                       class="w-9 h-9 bg-red-600 rounded-full flex items-center justify-center"
                     >
-                      <i class="bi bi-credit-card-fill text-white text-lg"></i>
+                      <img
+                        src="/images/deposit/deposit.png"
+                        alt="Deposit"
+                        class="w-[1.2rem] h-auto object-cover"
+                      />
                     </div>
                   </NuxtLinkLocale>
                   <!-- Check-in Icon -->
