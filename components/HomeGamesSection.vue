@@ -39,7 +39,9 @@
                 class="w-6 h-6 object-contain"
               />
               <span class="text-[10px] font-medium whitespace-nowrap">
-                {{ category.name }}
+                <span class="text-[10px] font-medium whitespace-nowrap">
+                  {{ getCategoryName(category) }}
+                </span>
               </span>
             </button>
           </div>
@@ -87,7 +89,7 @@
       <div class="flex items-center gap-3 mb-6 max-lg:mb-4">
         <div class="flex items-center gap-2">
           <h2 class="text-2xl font-bold text-[#f0eaea] max-lg:text-xl">
-            {{ categories[activeCategory].name }}
+            {{ getCategoryName(categories[activeCategory]) }}
           </h2>
         </div>
         <div
@@ -214,36 +216,40 @@ const isUserLoggedIn = useState("isUserLoggedIn");
 // Define categories with active and inactive images
 const categories = [
   {
-    name: "Slots",
+    name: { en: "Slots", zh: "老虎机", ms: "Slot" },
     iconActive: "/images/maingameicon/Slot_active.png",
     iconInactive: "/images/maingameicon/Slot_deactivate.png",
   },
   {
-    name: "Casino",
+    name: { en: "Casino", zh: "真人娱乐", ms: "Kasino" },
     iconActive: "/images/maingameicon/LiveCasino_active.png",
     iconInactive: "/images/maingameicon/LiveCasino_deactivate.png",
   },
   {
-    name: "Sports",
+    name: { en: "Sports", zh: "体育博彩", ms: "Sukan" },
     iconActive: "/images/maingameicon/Sports_active.png",
     iconInactive: "/images/maingameicon/Sports_deactivate.png",
   },
   {
-    name: "E-Sports",
+    name: { en: "E-Sports", zh: "电子竞技", ms: "E-Sukan" },
     iconActive: "/images/maingameicon/E-Sports_active.png",
     iconInactive: "/images/maingameicon/E-Sports_deactivate.png",
   },
   {
-    name: "Fishing",
+    name: { en: "Fishing", zh: "捕鱼游戏", ms: "Memancing" },
     iconActive: "/images/maingameicon/Fishing_active.png",
     iconInactive: "/images/maingameicon/Fishing_deactivate.png",
   },
   {
-    name: "Lottery",
+    name: { en: "Lottery", zh: "彩票", ms: "Loteri" },
     iconActive: "/images/maingameicon/Lottery_active.png",
     iconInactive: "/images/maingameicon/Lottery_deactivate.png",
   },
 ];
+
+const getCategoryName = (category) => {
+  return category.name[$locale.value] || category.name.en;
+};
 
 const isGameLocked = (gameDatabaseName) => {
   if (!isUserLoggedIn.value) return false;
