@@ -126,32 +126,32 @@ watch(
 <style>
 .seo-content {
   color: #b37a7a;
-  line-height: 1.8;
-  font-size: 15px;
+  line-height: 1.6;
+  font-size: 14px;
 }
 
 .seo-content h1 {
   color: #f0eaea;
   font-weight: bold;
-  font-size: 2rem;
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
+  font-size: 1.5rem;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 .seo-content h2 {
   color: #f0eaea;
   font-weight: bold;
-  font-size: 1.75rem;
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
+  font-size: 1.25rem;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 .seo-content h3 {
   color: #f0eaea;
   font-weight: bold;
-  font-size: 1.5rem;
-  margin-top: 1.25em;
-  margin-bottom: 0.5em;
+  font-size: 1.1rem;
+  margin-top: 0.75em;
+  margin-bottom: 0.4em;
 }
 
 .seo-content h4,
@@ -159,18 +159,19 @@ watch(
 .seo-content h6 {
   color: #f0eaea;
   font-weight: 600;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
+  font-size: 1rem;
+  margin-top: 0.75em;
+  margin-bottom: 0.4em;
 }
 
 .seo-content p {
-  margin-bottom: 1.25em;
+  margin-bottom: 0.75em;
   color: #b37a7a;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .seo-content p:empty {
-  margin: 1em 0;
+  margin: 0.4em 0;
 }
 
 .seo-content a {
@@ -188,14 +189,14 @@ watch(
 
 .seo-content ul,
 .seo-content ol {
-  margin: 1.5em 0;
-  padding-left: 1.75em;
+  margin: 0.75em 0;
+  padding-left: 1.5em;
   color: #b37a7a;
 }
 
 .seo-content li {
-  margin-bottom: 0.75em;
-  line-height: 1.7;
+  margin-bottom: 0.4em;
+  line-height: 1.5;
 }
 
 .seo-content ul li::marker {
@@ -210,17 +211,18 @@ watch(
 .seo-content table {
   width: 100%;
   border-collapse: collapse;
-  margin: 2em 0;
-  border-radius: 12px;
+  margin: 1em 0;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid #3b1c23;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
 }
 
 .seo-content th,
 .seo-content td {
   border: 1px solid #3b1c23;
-  padding: 12px 16px;
+  padding: 8px 12px;
   text-align: left;
 }
 
@@ -229,7 +231,7 @@ watch(
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.5px;
 }
 
@@ -259,36 +261,37 @@ watch(
 }
 
 .seo-content blockquote {
-  border-left: 4px solid #ff3344;
-  padding: 1.25em 1.5em;
-  margin: 2em 0;
+  border-left: 3px solid #ff3344;
+  padding: 0.75em 1em;
+  margin: 1em 0;
   background: linear-gradient(
     135deg,
     rgba(255, 51, 68, 0.05),
     rgba(204, 42, 58, 0.05)
   );
-  border-radius: 8px;
+  border-radius: 6px;
   color: #d4a5a5;
   font-style: italic;
 }
 
 .seo-content code {
   background-color: rgba(36, 16, 23, 0.9);
-  padding: 0.25em 0.5em;
+  padding: 0.2em 0.4em;
   border-radius: 4px;
   font-family: "Courier New", monospace;
   color: #ff5566;
   border: 1px solid #3b1c23;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 .seo-content pre {
   background: rgba(21, 9, 14, 0.9);
-  padding: 1.5em;
-  border-radius: 12px;
+  padding: 1em;
+  border-radius: 8px;
   overflow-x: auto;
   border: 1px solid #3b1c23;
-  margin: 2em 0;
+  margin: 1em 0;
+  font-size: 13px;
 }
 
 .seo-content pre code {
@@ -300,40 +303,111 @@ watch(
 
 .seo-content hr {
   border: 0;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(
     to right,
     rgba(255, 51, 68, 0),
-    rgba(255, 51, 68, 0.5),
+    rgba(255, 51, 68, 0.4),
     rgba(255, 51, 68, 0)
   );
-  margin: 3em 0;
+  margin: 1.5em 0;
 }
 
 @media (max-width: 768px) {
   .seo-content {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .seo-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-top: 0.75em;
+    margin-bottom: 0.4em;
   }
 
   .seo-content h2 {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
+    margin-top: 0.75em;
+    margin-bottom: 0.4em;
   }
 
   .seo-content h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+  }
+
+  .seo-content p {
+    margin-bottom: 0.5em;
+  }
+
+  .seo-content p:empty {
+    margin: 0.25em 0;
+  }
+
+  .seo-content ul,
+  .seo-content ol {
+    margin: 0.5em 0;
+    padding-left: 1.25em;
+  }
+
+  .seo-content li {
+    margin-bottom: 0.3em;
   }
 
   .seo-content table {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   .seo-content th,
   .seo-content td {
-    padding: 8px 10px;
+    padding: 6px 8px;
+  }
+
+  .seo-content blockquote {
+    padding: 0.5em 0.75em;
+    margin: 0.75em 0;
+  }
+
+  .seo-content pre {
+    padding: 0.75em;
+    margin: 0.75em 0;
+    font-size: 12px;
+  }
+
+  .seo-content hr {
+    margin: 1em 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .seo-content {
+    font-size: 12px;
+  }
+
+  .seo-content h1 {
+    font-size: 1.1rem;
+  }
+
+  .seo-content h2 {
+    font-size: 1rem;
+  }
+
+  .seo-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .seo-content p:empty {
+    margin: 0.2em 0;
+  }
+
+  .seo-content table {
+    font-size: 10px;
+  }
+
+  .seo-content th,
+  .seo-content td {
+    padding: 4px 6px;
   }
 }
 </style>
