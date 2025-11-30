@@ -77,7 +77,7 @@
                   :class="activeCategory === index ? 'brightness-0 invert' : ''"
                 />
                 <span class="text-sm font-semibold">
-                  {{ category.name }}
+                  {{ getCategoryName(category) }}
                 </span>
               </div>
             </button>
