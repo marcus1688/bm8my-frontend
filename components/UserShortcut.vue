@@ -1,98 +1,70 @@
 <template>
-  <section v-if="userData" class="py-3 max-lg:py-2">
-    <div class="mx-auto containerWid lg:hidden">
-      <div
-        class="flex justify-between items-center bg-[#241017] border border-[#3b1c23] rounded-xl px-4 py-3 max-lg:px-2 max-lg:py-2 gap-3"
-      >
-        <!-- Left: User Info -->
-        <div class="flex items-center gap-3 max-lg:gap-2 flex-1 min-w-0">
-          <!-- Wallet & VIP Cards -->
-          <div class="flex flex-col gap-1.5 max-lg:gap-1 flex-1">
-            <!-- Wallet Card -->
-            <div class="flex items-stretch w-full gap-2">
-              <div class="flex flex-col gap-1 items-center">
-                <img
-                  src="/images/user/icon.png"
-                  alt="User"
-                  class="w-8 h-8 max-lg:w-10 max-lg:h-auto"
-                />
-                <span class="text-[#ff3344] font-bold text-sm max-lg:text-xs">
-                  {{ userData.viplevel || "Bronze" }}
-                </span>
-              </div>
-              <div class="flex flex-col gap-1 w-full">
-                <div class="px-3 max-lg:px-2">
-                  <span
-                    class="text-[#b37a7a] text-[10px] max-lg:text-xs flex items-center gap-1"
-                  >
-                    {{ $t("wallet_balance") }}
-                  </span>
-                </div>
-
-                <div
-                  class="flex items-center w-full max-w-[200px] gap-3 max-lg:gap-2 px-3 py-2 max-lg:px-2 max-lg:py-1.5 bg-[#1A0D13] border border-[#3b1c23] rounded-lg min-w-0 h-full"
+  <section v-if="userData" class="pt-2">
+    <div class="mx-auto lg:hidden">
+      <div class="bg-[#0f0709] rounded-2xl overflow-hidden">
+        <div class="px-4 pt-4 pb-3">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-[#5a4545] text-sm max-sm:text-xs">{{
+                  $t("wallet_balance")
+                }}</span>
+                <div class="h-3 w-px bg-[#2a1418]"></div>
+                <span
+                  class="text-[#ff3344] text-sm max-sm:text-xs font-semibold"
+                  >{{ userData.viplevel || "Bronze" }}</span
                 >
-                  <div class="flex flex-col flex-1 min-w-0">
-                    <span
-                      class="text-[#f0eaea] font-bold text-sm max-lg:text-sm"
-                    >
-                      MYR {{ userData.wallet?.toFixed(2) || "0.00" }}
-                    </span>
-                  </div>
-                  <button
-                    @click="handleRefresh"
-                    :disabled="isRefreshing"
-                    class="w-6 h-6 max-lg:w-5 max-lg:h-5 rounded-full bg-[#241017] border border-[#3b1c23] flex items-center justify-center text-[#b37a7a] lg:hover:text-[#ff3344] lg:hover:border-[#ff3344] transition-all disabled:opacity-50"
-                  >
-                    <i
-                      class="bi bi-arrow-clockwise text-xs max-lg:text-[10px]"
-                      :class="{ 'animate-spin': isRefreshing }"
-                    ></i>
-                  </button>
-                </div>
+              </div>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-[#6a5050] text-xs font-medium">MYR</span>
+                <span
+                  class="text-white text-2xl max-sm:text-xl font-bold leading-none"
+                  >{{ userData.wallet?.toFixed(2) || "0.00" }}</span
+                >
               </div>
             </div>
+
+            <button
+              @click="handleRefresh"
+              :disabled="isRefreshing"
+              class="mt-1 w-8 h-8 max-sm:w-7 max-sm:h-7 rounded-lg bg-[#1a0f11] flex items-center justify-center text-[#5a4545] active:bg-[#251418] transition-colors"
+            >
+              <i
+                class="bi bi-arrow-clockwise"
+                :class="{ 'animate-spin': isRefreshing }"
+              ></i>
+            </button>
           </div>
         </div>
 
-        <!-- Right: Action Buttons with Icons -->
-        <div class="flex items-center gap-3 max-lg:gap-2 flex-shrink-0">
-          <!-- Deposit -->
-          <NuxtLinkLocale
-            to="/myaccount/deposit"
-            class="flex flex-col items-center gap-1 group"
-          >
-            <div
-              class="w-11 h-11 max-lg:w-9 max-lg:h-9 rounded-full bg-gradient-to-br from-[#ff3344] to-[#cc2a3a] flex items-center justify-center shadow-lg shadow-[#ff3344]/30 lg:group-hover:scale-110 transition-transform"
+        <div class="px-3 pb-3">
+          <div class="flex gap-2">
+            <NuxtLinkLocale
+              to="/myaccount/deposit"
+              class="flex-1 py-2.5 bg-[#ff3344] rounded-lg flex items-center justify-center gap-2 active:bg-[#e62e3f] transition-colors"
             >
               <i
-                class="bi bi-wallet-fill text-white text-lg max-lg:text-base"
+                class="bi bi-wallet-fill text-white/90 max-[500px]:text-sm"
               ></i>
-            </div>
-            <span
-              class="text-[#f0eaea] text-[10px] max-lg:text-[9px] font-medium"
-            >
-              {{ $t("deposit") }}
-            </span>
-          </NuxtLinkLocale>
-          <!-- Withdraw -->
-          <NuxtLinkLocale
-            to="/myaccount/withdraw"
-            class="flex flex-col items-center gap-1 group"
-          >
-            <div
-              class="w-11 h-11 max-lg:w-9 max-lg:h-9 rounded-full bg-gradient-to-br from-[#ff3344] to-[#cc2a3a] flex items-center justify-center shadow-lg shadow-[#ff3344]/30 lg:group-hover:scale-110 transition-transform"
+              <span
+                class="text-white text-sm max-[500px]:text-xs font-semibold"
+                >{{ $t("deposit") }}</span
+              >
+            </NuxtLinkLocale>
+
+            <NuxtLinkLocale
+              to="/myaccount/withdraw"
+              class="flex-1 py-2.5 bg-[#1a0f11] border border-[#2a1418] rounded-lg flex items-center justify-center gap-2 active:bg-[#251418] transition-colors"
             >
               <i
-                class="bi bi-cash-coin text-white text-lg max-lg:text-base"
+                class="bi bi-cash-stack text-[#7a5a5a] max-[500px]:text-sm"
               ></i>
-            </div>
-            <span
-              class="text-[#f0eaea] text-[10px] max-lg:text-[9px] font-medium"
-            >
-              {{ $t("withdraw") }}
-            </span>
-          </NuxtLinkLocale>
+              <span
+                class="text-[#7a5a5a] text-sm max-[500px]:text-xs font-medium"
+                >{{ $t("withdraw") }}</span
+              >
+            </NuxtLinkLocale>
+          </div>
         </div>
       </div>
     </div>
@@ -106,7 +78,6 @@ const isRefreshing = ref(false);
 
 const handleRefresh = async () => {
   if (isRefreshing.value) return;
-
   isRefreshing.value = true;
   try {
     const { data } = await get("userdata");
@@ -119,17 +90,6 @@ const handleRefresh = async () => {
     isRefreshing.value = false;
   }
 };
-
-const vipSettings = useState("vipSettings");
-
-const vipLevels = computed(() => vipSettings.value?.vipLevels || []);
-
-const currentLevelInfo = computed(() => {
-  if (!vipLevels.value || vipLevels.value.length === 0) return null;
-  return vipLevels.value.find(
-    (level) => level.name === userData.value?.viplevel
-  );
-});
 </script>
 
 <style scoped>
@@ -141,7 +101,6 @@ const currentLevelInfo = computed(() => {
     transform: rotate(360deg);
   }
 }
-
 .animate-spin {
   animation: spin 1s linear infinite;
 }

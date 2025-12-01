@@ -29,7 +29,7 @@
         </swiper>
       </section>
 
-      <section class="shadow-lg shadow-red-600/20 relative z-10 py-2">
+      <section class="lg:shadow-lg shadow-red-600/20 relative z-10 py-2">
         <div class="mx-auto containerWid">
           <div
             class="flex justify-between items-center overflow-x-auto scrollbar-hide"
@@ -55,8 +55,9 @@
             </NuxtMarquee>
           </div>
         </div>
-        <UserShortcut v-if="userData" class="lg:hidden" />
       </section>
+
+      <UserShortcut v-if="userData" class="lg:hidden" />
 
       <!-- <LuckySpin v-if="showLuckySpin" @close="showLuckySpin = false" /> -->
       <div class="lg:hidden"><HomeGamesSection /></div>
