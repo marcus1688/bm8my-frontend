@@ -162,6 +162,7 @@ const emit = defineEmits(["close"]);
 const userData = useState("userData");
 const generalSetting = useState("generalSetting");
 const slotKiosks = useState("slotKiosks");
+const lotteryKiosks = useState("lotteryKiosks");
 const { showAlert } = useAlert();
 const { get, post } = useApiEndpoint();
 const gameBalances = ref([]);
@@ -176,12 +177,16 @@ const getGameIcon = (gameName) => {
   };
 
   const normalizedGameName = normalize(gameName);
-  console.log("gamename", normalizedGameName);
-  const kiosk = slotKiosks.value.find((k) => {
-    const normalizedKioskName = normalize(k.name);
-    console.log(normalizedKioskName, "normalise name");
-    return normalizedKioskName === normalizedGameName;
-  });
+
+  let kiosk = slotKiosks.value.find(
+    (k) => normalize(k.name) === normalizedGameName
+  );
+
+  if (!kiosk) {
+    kiosk = lotteryKiosks.value.find(
+      (k) => normalize(k.name) === normalizedGameName
+    );
+  }
 
   return kiosk?.banner || kiosk?.logo || null;
 };

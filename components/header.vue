@@ -2576,10 +2576,15 @@ const getGameIcon = (gameName) => {
 
   const normalizedGameName = normalize(gameName);
 
-  const kiosk = slotKiosks.value.find((k) => {
-    const normalizedKioskName = normalize(k.name);
-    return normalizedKioskName === normalizedGameName;
-  });
+  let kiosk = slotKiosks.value.find(
+    (k) => normalize(k.name) === normalizedGameName
+  );
+
+  if (!kiosk) {
+    kiosk = lotteryKiosks.value.find(
+      (k) => normalize(k.name) === normalizedGameName
+    );
+  }
 
   return kiosk?.banner || kiosk?.logo || null;
 };
