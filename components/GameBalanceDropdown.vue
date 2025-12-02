@@ -176,9 +176,10 @@ const getGameIcon = (gameName) => {
   };
 
   const normalizedGameName = normalize(gameName);
-
+  console.log("gamename", normalizedGameName);
   const kiosk = slotKiosks.value.find((k) => {
     const normalizedKioskName = normalize(k.name);
+    console.log(normalizedKioskName, "normalise name");
     return normalizedKioskName === normalizedGameName;
   });
 
