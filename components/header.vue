@@ -1828,7 +1828,6 @@
                         </div>
                       </div>
 
-                      <!-- Game Wallets Section -->
                       <div class="p-4">
                         <div class="flex items-center gap-2 mb-3 px-1">
                           <div class="h-px flex-1 bg-[#3b1c23]"></div>
