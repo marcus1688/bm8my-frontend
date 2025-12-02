@@ -171,9 +171,17 @@ const dropdownTimer = ref(null);
 const mouseOverDropdown = ref(false);
 
 const getGameIcon = (gameName) => {
-  const kiosk = slotKiosks.value.find(
-    (k) => k.name.toLowerCase() === gameName.toLowerCase()
-  );
+  const normalize = (str) => {
+    return str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  };
+
+  const normalizedGameName = normalize(gameName);
+
+  const kiosk = slotKiosks.value.find((k) => {
+    const normalizedKioskName = normalize(k.name);
+    return normalizedKioskName === normalizedGameName;
+  });
+
   return kiosk?.banner || kiosk?.logo || null;
 };
 
