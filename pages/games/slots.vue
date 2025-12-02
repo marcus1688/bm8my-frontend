@@ -544,7 +544,7 @@
 
                 <button
                   @click="launchHTMLGame"
-                  class="w-full bg-gradient-to-r from-[#c21b3a] to-[#ff3344] text-white py-3.5 max-md:py-3 rounded-xl font-bold lg:hover:from-[#a1122d] lg:hover:to-[#c21b3a] transition-all flex items-center justify-center gap-2 mb-3 max-md:mb-2"
+                  class="w-full bg-gradient-to-r from-[#c21b3a] to-[#ff3344] text-white py-3 max-sm:text-sm max-sm:py-2 rounded-lg font-bold lg:hover:from-[#a1122d] lg:hover:to-[#c21b3a] transition-all flex items-center justify-center gap-2 mb-3 max-md:mb-2"
                 >
                   <i class="bi bi-play-fill text-xl"></i>
                   <span>{{ $t("play_now") }}</span>
