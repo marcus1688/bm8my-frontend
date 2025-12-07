@@ -10,7 +10,6 @@
       :class="visible ? 'animate-popupIn' : 'animate-popupOut'"
     >
       <div class="flex justify-center mb-4">
-        <!-- Dynamic Icon with Animation -->
         <div
           :class="[
             'w-14 h-14 flex items-center justify-center rounded-full border-[3px] shadow-lg icon-container',
