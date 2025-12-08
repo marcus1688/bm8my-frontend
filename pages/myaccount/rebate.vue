@@ -1,5 +1,9 @@
 <template>
   <UserAccountLayout>
+    <TurnoverRequirementModal
+      v-model="showTurnoverModal"
+      :details="turnoverDetails"
+    />
     <div class="text-[#f0eaea]">
       <div class="mb-6 max-lg:mb-4">
         <h1 class="text-xl font-bold mb-1 max-lg:text-lg max-sm:text-base">
@@ -402,6 +406,13 @@ const userData = useState("userData");
 const { get, post } = useApiEndpoint();
 const { showAlert } = useAlert();
 
+const showTurnoverModal = ref(false);
+const turnoverDetails = ref({
+  required: 0,
+  current: 0,
+  remaining: 0,
+});
+
 const formatNumber = (value, rowName) => {
   if (!value) return "";
   if (
@@ -442,15 +453,33 @@ const fetchSettings = async () => {
 const claimRebate = async () => {
   claimButtonLoading.value = true;
   try {
-    const { data } = await post("user/claimrebate");
+    const { data } = await post("rebatemanualclaim");
     if (data.success) {
       showAlert($t("alert_success"), $t("rebate_claim_success"), "success");
     } else {
-      showAlert(
-        $t("alert_info"),
-        data.message[$locale.value] || data.message.en,
-        "info"
-      );
+      const isTurnoverError =
+        data.message?.en
+          ?.toLowerCase()
+          .includes("turnover requirement not met") ||
+        data.message?.zh?.includes("流水要求未达到") ||
+        data.message?.ms
+          ?.toLowerCase()
+          .includes("keperluan pusing ganti tidak dipenuhi");
+
+      if (isTurnoverError && data.turnoverDetails) {
+        turnoverDetails.value = {
+          required: data.turnoverDetails.required || 0,
+          current: data.turnoverDetails.current || 0,
+          remaining: data.turnoverDetails.remaining || 0,
+        };
+        showTurnoverModal.value = true;
+      } else {
+        showAlert(
+          $t("alert_info"),
+          data.message[$locale.value] || data.message.en,
+          "info"
+        );
+      }
     }
   } catch (error) {
     console.error("Error claiming rebate:", error);
