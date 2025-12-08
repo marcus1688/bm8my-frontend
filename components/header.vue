@@ -25,7 +25,7 @@
         style="background-image: url('/images/header.png')"
       >
         <div
-          class="mx-auto px-24 py-4 h-full max-2xl:px-12 max-[1350px]:px-2 max-[1070px]:px-0 max-lg:p-2 max-[1350px]:flex max-lg:block max-[1350px]:justify-between"
+          class="mx-auto px-24 py-4 h-full max-[1600px]:px-12 max-[1350px]:px-2 max-[1070px]:px-0 max-lg:p-2 max-[1350px]:flex max-lg:block max-[1350px]:justify-between"
         >
           <div class="flex justify-between items-center h-full w-full">
             <div class="flex items-center gap-4 max-[373px]:!gap-2">
@@ -35,11 +35,11 @@
               >
                 <i class="bi bi-list text-2xl max-[480px]:text-xl"></i>
               </button>
-              <NuxtLinkLocale class="max-lg:hidden" to="/">
+              <NuxtLinkLocale class="max-[1500px]:hidden" to="/">
                 <img
                   :src="generalSetting.logoimage"
                   alt="Logo"
-                  class="w-24 h-auto max-[1350px]:hidden"
+                  class="w-32 h-auto max-[1350px]:hidden"
                 />
               </NuxtLinkLocale>
               <div v-if="!userData">
@@ -63,10 +63,12 @@
               </NuxtLinkLocale>
             </div>
 
-            <nav class="hidden lg:flex items-center flex-1 justify-center">
+            <nav
+              class="hidden lg:flex items-center flex-1 justify-center min-[1500px]:mr-24"
+            >
               <NuxtLinkLocale
                 to="/"
-                class="hidden max-[1350px]:flex items-center gap-1 menuText font-medium text-gray-300 lg:hover:text-red-400 transition-colors px-3"
+                class="flex items-center gap-1 menuText font-medium text-gray-300 lg:hover:text-red-400 transition-colors px-3"
               >
                 <span class="max-[1060px]:text-[0.8rem] max-lg:text-[1rem]">{{
                   $t("home")
@@ -2022,6 +2024,26 @@
 
                   <div v-if="mobileTab === 'games'" class="px-4 pt-3">
                     <div class="grid grid-cols-2 gap-3">
+                      <NuxtLinkLocale
+                        to="/"
+                        @click="closeMobileMenu"
+                        class="group flex flex-col items-center p-3 bg-[#241017]/60 rounded-xl border border-[#3b1c23] lg:hover:bg-[#2a0f14] lg:hover:border-[#ff3344]/30 transition-all"
+                      >
+                        <div
+                          class="w-16 h-12 flex items-center justify-center mb-2 lg:group-hover:scale-105 transition-transform"
+                        >
+                          <img
+                            src="/images/burger-menu/racing.png"
+                            class="w-full h-auto object-contain"
+                            alt="Home"
+                          />
+                        </div>
+                        <span
+                          class="text-sm font-medium text-center text-white lg:group-hover:text-white transition-colors"
+                        >
+                          {{ $t("home") }}
+                        </span>
+                      </NuxtLinkLocale>
                       <NuxtLinkLocale
                         v-for="item in HeaderNav"
                         :key="item.name"

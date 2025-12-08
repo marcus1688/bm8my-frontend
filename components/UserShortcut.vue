@@ -60,9 +60,11 @@
             <div
               class="w-11 h-11 max-lg:w-9 max-lg:h-9 max-[360px]:w-8 max-[360px]:h-8 rounded-full bg-gradient-to-br from-[#ff3344] to-[#cc2a3a] flex items-center justify-center shadow-lg shadow-[#ff3344]/30 lg:group-hover:scale-110 transition-transform"
             >
-              <i
-                class="bi bi-wallet-fill text-white text-lg max-lg:text-base max-[360px]:text-sm"
-              ></i>
+              <img
+                src="/images/usershortcut/deposit.png"
+                alt="Deposit"
+                class="w-5 h-auto"
+              />
             </div>
             <span
               class="text-[#f0eaea] text-[10px] max-lg:text-[9px] font-medium"
@@ -77,9 +79,11 @@
             <div
               class="w-11 h-11 max-lg:w-9 max-lg:h-9 max-[360px]:w-8 max-[360px]:h-8 rounded-full bg-gradient-to-br from-[#ff3344] to-[#cc2a3a] flex items-center justify-center shadow-lg shadow-[#ff3344]/30 lg:group-hover:scale-110 transition-transform"
             >
-              <i
-                class="bi bi-cash-coin text-white text-lg max-lg:text-base max-[360px]:text-sm"
-              ></i>
+              <img
+                src="/images/usershortcut/withdraw.png"
+                alt="Withdraw"
+                class="w-6 h-auto"
+              />
             </div>
             <span
               class="text-[#f0eaea] text-[10px] max-lg:text-[9px] font-medium"
