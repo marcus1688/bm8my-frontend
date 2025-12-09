@@ -96,7 +96,7 @@ watch(
     if (newValue) {
       document.body.style.overflow = "hidden";
       nextTick(() => {
-        adjustTables();
+        adjustContent();
       });
     } else {
       document.body.style.overflow = "";
@@ -106,12 +106,30 @@ watch(
 
 onMounted(async () => {
   await nextTick();
-  adjustTables();
-  window.addEventListener("resize", adjustTables);
+  adjustContent();
+  window.addEventListener("resize", adjustContent);
 });
 
-function adjustTables() {
-  const paragraphs = document.querySelectorAll(".promotion-content p");
+function adjustContent() {
+  const content = document.querySelector(".promotion-content");
+  if (!content) return;
+
+  const screenWidth = window.innerWidth;
+  if (screenWidth <= 640) {
+    content.style.zoom = "0.7";
+    content.style.transform = "none";
+    content.style.width = "100%";
+  } else if (screenWidth <= 1024) {
+    content.style.zoom = "0.85";
+    content.style.transform = "none";
+    content.style.width = "100%";
+  } else {
+    content.style.zoom = "1";
+    content.style.transform = "none";
+    content.style.width = "100%";
+  }
+
+  const paragraphs = content.querySelectorAll("p");
   paragraphs.forEach((p) => {
     const text = p.textContent?.trim();
     if (
@@ -124,15 +142,21 @@ function adjustTables() {
       p.style.height = "0.75rem";
       p.style.margin = "0";
       p.style.padding = "0";
+    } else {
+      p.style.color = "#f0eaea";
+      p.style.lineHeight = "1.6";
     }
   });
-  const tables = document.querySelectorAll(".promotion-content table");
+
+  const tables = content.querySelectorAll("table");
   tables.forEach((table) => {
     if (!table.parentElement.classList.contains("table-wrapper")) {
       const wrapper = document.createElement("div");
       wrapper.className = "table-wrapper";
       wrapper.style.width = "100%";
       wrapper.style.overflowX = "auto";
+      wrapper.style.marginBottom = "1rem";
+      wrapper.style.paddingBottom = "0.5rem";
       table.parentNode.insertBefore(wrapper, table);
       wrapper.appendChild(table);
     }
@@ -145,11 +169,124 @@ function adjustTables() {
     table.style.width = "100%";
     table.style.maxWidth = "100%";
     table.style.display = "table";
+    table.style.borderCollapse = "separate";
+    table.style.borderSpacing = "0";
+    table.style.backgroundColor = "#241017";
+    table.style.border = "1px solid white";
+
+    const allRows = table.querySelectorAll("tr");
+    const totalRows = allRows.length;
+
+    allRows.forEach((row, rowIndex) => {
+      const cells = row.querySelectorAll("td, th");
+      const totalCells = cells.length;
+
+      cells.forEach((cell, cellIndex) => {
+        cell.style.padding = "0.75rem 0.5rem";
+        cell.style.textAlign = "center";
+        cell.style.color = "#f0eaea";
+        cell.style.borderBottom = "1px solid white";
+        cell.style.borderRight =
+          cellIndex < totalCells - 1 ? "1px solid white" : "none";
+      });
+    });
+
+    const firstRow = table.querySelector("tbody tr:first-child");
+    if (firstRow) {
+      const firstRowCells = firstRow.querySelectorAll("td");
+      firstRowCells.forEach((cell) => {
+        cell.style.whiteSpace = "nowrap";
+        cell.style.backgroundColor = "#3b1c23";
+        cell.style.fontWeight = "600";
+        cell.style.color = "#ff3344";
+      });
+    }
+
+    const rows = table.querySelectorAll("tbody tr");
+    rows.forEach((row, index) => {
+      if (index > 0 && index % 2 === 0) {
+        const cells = row.querySelectorAll("td");
+        cells.forEach((cell) => {
+          cell.style.backgroundColor = "#1a0d13";
+        });
+      }
+    });
+  });
+
+  const uls = content.querySelectorAll("ul");
+  uls.forEach((ul) => {
+    ul.style.marginLeft = "1.5rem";
+    ul.style.marginBottom = "1rem";
+    ul.style.color = "#f0eaea";
+    ul.style.listStyleType = "disc";
+    ul.style.paddingLeft = "1rem";
+  });
+
+  const ols = content.querySelectorAll("ol");
+  ols.forEach((ol) => {
+    ol.style.marginLeft = "0.5rem";
+    ol.style.color = "#f0eaea";
+    ol.style.listStyleType = "decimal";
+    ol.style.paddingLeft = "1rem";
+  });
+
+  const lis = content.querySelectorAll("li");
+  lis.forEach((li) => {
+    li.style.marginBottom = "0.5rem";
+    li.style.lineHeight = "1.6";
+    li.style.display = "list-item";
+  });
+
+  const headings = content.querySelectorAll("h1, h2, h3, h4");
+  headings.forEach((heading) => {
+    heading.style.marginTop = "1.5rem";
+    heading.style.marginBottom = "0.75rem";
+    heading.style.fontWeight = "700";
+    heading.style.color = "#ff3344";
+  });
+
+  const h1s = content.querySelectorAll("h1");
+  h1s.forEach((h1) => (h1.style.fontSize = "1.5rem"));
+
+  const h2s = content.querySelectorAll("h2");
+  h2s.forEach((h2) => (h2.style.fontSize = "1.25rem"));
+
+  const h3s = content.querySelectorAll("h3");
+  h3s.forEach((h3) => {
+    h3.style.fontSize = "1.125rem";
+    h3.style.marginTop = "0.75rem";
+    h3.style.marginBottom = "0.5rem";
+  });
+
+  const hrs = content.querySelectorAll("hr");
+  hrs.forEach((hr) => {
+    hr.style.border = "none";
+    hr.style.height = "1px";
+    hr.style.background = "#3b1c23";
+    hr.style.margin = "1.5rem 0";
+  });
+
+  const links = content.querySelectorAll("a");
+  links.forEach((link) => {
+    link.style.color = "#ff3344";
+    link.style.textDecoration = "underline";
+  });
+
+  const strongs = content.querySelectorAll("strong, b");
+  strongs.forEach((strong) => {
+    strong.style.color = "#ff3344";
+    strong.style.fontWeight = "700";
+  });
+
+  const ems = content.querySelectorAll("em, i");
+  ems.forEach((em) => {
+    em.style.fontStyle = "italic";
+    em.style.color = "#b37a7a";
   });
 }
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", adjustTables);
+  window.removeEventListener("resize", adjustContent);
   document.body.style.overflow = "";
 });
 </script>
@@ -212,150 +349,9 @@ onBeforeUnmount(() => {
   background: #ff3344;
 }
 
-.table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  margin-bottom: 1rem;
-}
-
-.promotion-content {
-  width: 100%;
-  color: #f0eaea;
-}
-
-:deep(.promotion-content table) {
-  width: 100% !important;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-  background-color: #241017;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid white;
-}
-
-:deep(.promotion-content table th),
-:deep(.promotion-content table td) {
-  border: 1px solid white;
-  padding: 0.75rem 0.5rem;
-  text-align: left;
-  color: #f0eaea;
-}
-
-:deep(.promotion-content table th) {
-  background-color: #3b1c23;
-  font-weight: 600;
-  color: #ff3344;
-  font-size: 0.875rem;
-  border: 1px solid white;
-}
-
-:deep(.promotion-content table tr:nth-child(even)) {
-  background-color: #1a0d13;
-}
-
-:deep(.promotion-content table tr:hover) {
-  background-color: #2a0f14;
-}
-
-:deep(.promotion-content p) {
-  color: #f0eaea;
-  line-height: 1.6;
-}
-
-:deep(.promotion-content ul) {
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
-  color: #f0eaea;
-  list-style-type: disc;
-  padding-left: 1rem;
-}
-
-:deep(.promotion-content ol) {
-  margin-left: 0.5rem;
-
-  color: #f0eaea;
-  list-style-type: decimal;
-  padding-left: 1rem;
-}
-
-:deep(.promotion-content li) {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-  display: list-item;
-}
-
-:deep(.promotion-content h1),
-:deep(.promotion-content h2),
-:deep(.promotion-content h3),
-:deep(.promotion-content h4) {
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
-  color: #ff3344;
-}
-
-:deep(.promotion-content h1) {
-  font-size: 1.5rem;
-}
-
-:deep(.promotion-content h2) {
-  font-size: 1.25rem;
-}
-
-:deep(.promotion-content h3) {
-  font-size: 1.125rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-:deep(.promotion-content hr) {
-  border: none;
-  height: 1px;
-  background: #3b1c23;
-  margin: 1.5rem 0;
-}
-
-:deep(.promotion-content a) {
-  color: #ff3344;
-  text-decoration: underline;
-  transition: color 0.2s;
-}
-
-:deep(.promotion-content a:hover) {
-  color: #cc2a3a;
-}
-
-:deep(.promotion-content strong),
-:deep(.promotion-content b) {
-  color: #ff3344;
-  font-weight: 700;
-}
-
-:deep(.promotion-content em),
-:deep(.promotion-content i) {
-  font-style: italic;
-  color: #b37a7a;
-}
-
 .promotion-content {
   width: 100%;
   color: #f0eaea;
   font-size: 0.875rem;
-}
-
-@media (max-width: 1024px) {
-  .promotion-content {
-    zoom: 0.85;
-  }
-}
-
-@media (max-width: 640px) {
-  .promotion-content {
-    zoom: 0.7;
-  }
-}
-
-:deep(.promotion-content table tbody tr:first-child td) {
-  white-space: nowrap;
 }
 </style>
