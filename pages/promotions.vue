@@ -220,6 +220,8 @@ const getCategoryIconByKey = (key) => {
 function openPromotionModal(promotion) {
   selectedPromotion.value = {
     promotionimage: promotion.promotionimage,
+    promotionimage2: promotion.promotionimage2,
+    promotionimage3: promotion.promotionimage3,
     maintitle:
       $locale.value === "zh"
         ? promotion.maintitle

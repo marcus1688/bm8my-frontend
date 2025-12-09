@@ -32,7 +32,7 @@
           <div class="flex-1 overflow-y-auto scrollbar-thin">
             <div class="bg-[#1A0D13] p-3">
               <img
-                :src="promotion.promotionimage"
+                :src="localizedImage"
                 :alt="promotion.maintitle"
                 class="w-[50vh] mx-auto rounded-lg border border-[#3b1c23]"
               />
@@ -70,15 +70,26 @@ const props = defineProps({
     default: () => ({
       maintitle: "",
       promotionimage: "",
+      promotionimage2: "",
+      promotionimage3: "",
       content: "",
       TnC: "",
     }),
   },
 });
 
+const localizedImage = computed(() => {
+  if ($locale.value === "zh" && props.promotion.promotionimage2) {
+    return props.promotion.promotionimage2;
+  }
+  if ($locale.value === "ms" && props.promotion.promotionimage3) {
+    return props.promotion.promotionimage3;
+  }
+  return props.promotion.promotionimage;
+});
+
 defineEmits(["close"]);
 
-// Lock body scroll when modal is open
 watch(
   () => props.show,
   (newValue) => {
@@ -100,6 +111,21 @@ onMounted(async () => {
 });
 
 function adjustTables() {
+  const paragraphs = document.querySelectorAll(".promotion-content p");
+  paragraphs.forEach((p) => {
+    const text = p.textContent?.trim();
+    if (
+      !text ||
+      text === "" ||
+      text === "\u00A0" ||
+      p.innerHTML.trim() === "&nbsp;" ||
+      p.innerHTML.trim() === ""
+    ) {
+      p.style.height = "0.75rem";
+      p.style.margin = "0";
+      p.style.padding = "0";
+    }
+  });
   const tables = document.querySelectorAll(".promotion-content table");
   tables.forEach((table) => {
     if (!table.parentElement.classList.contains("table-wrapper")) {
@@ -129,7 +155,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* Fade transition for overlay */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -140,7 +165,6 @@ onBeforeUnmount(() => {
   opacity: 0;
 }
 
-/* Popup transition animations - Same as alert */
 @keyframes popupIn {
   0% {
     opacity: 0;
@@ -171,7 +195,6 @@ onBeforeUnmount(() => {
   animation: popupOut 0.2s ease-in forwards;
 }
 
-/* Custom scrollbar */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
 }
@@ -189,14 +212,12 @@ onBeforeUnmount(() => {
   background: #ff3344;
 }
 
-/* Table wrapper */
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
   margin-bottom: 1rem;
 }
 
-/* Content styles */
 .promotion-content {
   width: 100%;
   color: #f0eaea;
@@ -209,11 +230,12 @@ onBeforeUnmount(() => {
   background-color: #241017;
   border-radius: 8px;
   overflow: hidden;
+  border: 1px solid white;
 }
 
 :deep(.promotion-content table th),
 :deep(.promotion-content table td) {
-  border: 1px solid #3b1c23;
+  border: 1px solid white;
   padding: 0.75rem 0.5rem;
   text-align: left;
   color: #f0eaea;
@@ -224,6 +246,7 @@ onBeforeUnmount(() => {
   font-weight: 600;
   color: #ff3344;
   font-size: 0.875rem;
+  border: 1px solid white;
 }
 
 :deep(.promotion-content table tr:nth-child(even)) {
@@ -239,16 +262,26 @@ onBeforeUnmount(() => {
   line-height: 1.6;
 }
 
-:deep(.promotion-content ul),
-:deep(.promotion-content ol) {
+:deep(.promotion-content ul) {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
   color: #f0eaea;
+  list-style-type: disc;
+  padding-left: 1rem;
+}
+
+:deep(.promotion-content ol) {
+  margin-left: 0.5rem;
+
+  color: #f0eaea;
+  list-style-type: decimal;
+  padding-left: 1rem;
 }
 
 :deep(.promotion-content li) {
   margin-bottom: 0.5rem;
   line-height: 1.6;
+  display: list-item;
 }
 
 :deep(.promotion-content h1),
@@ -302,5 +335,27 @@ onBeforeUnmount(() => {
 :deep(.promotion-content i) {
   font-style: italic;
   color: #b37a7a;
+}
+
+.promotion-content {
+  width: 100%;
+  color: #f0eaea;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 1024px) {
+  .promotion-content {
+    zoom: 0.85;
+  }
+}
+
+@media (max-width: 640px) {
+  .promotion-content {
+    zoom: 0.7;
+  }
+}
+
+:deep(.promotion-content table tbody tr:first-child td) {
+  white-space: nowrap;
 }
 </style>
