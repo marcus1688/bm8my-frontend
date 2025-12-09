@@ -115,19 +115,19 @@ function adjustContent() {
   if (!content) return;
 
   const screenWidth = window.innerWidth;
+
   if (screenWidth <= 640) {
     content.style.zoom = "0.7";
-    content.style.transform = "none";
-    content.style.width = "100%";
   } else if (screenWidth <= 1024) {
     content.style.zoom = "0.85";
-    content.style.transform = "none";
-    content.style.width = "100%";
   } else {
     content.style.zoom = "1";
-    content.style.transform = "none";
-    content.style.width = "100%";
   }
+
+  content.style.transform = "none";
+  content.style.width = "100%";
+  content.style.webkitTextSizeAdjust = "100%";
+  content.style.textSizeAdjust = "100%";
 
   const paragraphs = content.querySelectorAll("p");
   paragraphs.forEach((p) => {
@@ -145,6 +145,7 @@ function adjustContent() {
     } else {
       p.style.color = "#f0eaea";
       p.style.lineHeight = "1.6";
+      p.style.webkitTextSizeAdjust = "100%";
     }
   });
 
@@ -173,9 +174,9 @@ function adjustContent() {
     table.style.borderSpacing = "0";
     table.style.backgroundColor = "#241017";
     table.style.border = "1px solid white";
+    table.style.webkitTextSizeAdjust = "100%";
 
     const allRows = table.querySelectorAll("tr");
-    const totalRows = allRows.length;
 
     allRows.forEach((row, rowIndex) => {
       const cells = row.querySelectorAll("td, th");
@@ -188,6 +189,7 @@ function adjustContent() {
         cell.style.borderBottom = "1px solid white";
         cell.style.borderRight =
           cellIndex < totalCells - 1 ? "1px solid white" : "none";
+        cell.style.webkitTextSizeAdjust = "100%";
       });
     });
 
@@ -220,6 +222,7 @@ function adjustContent() {
     ul.style.color = "#f0eaea";
     ul.style.listStyleType = "disc";
     ul.style.paddingLeft = "1rem";
+    ul.style.webkitTextSizeAdjust = "100%";
   });
 
   const ols = content.querySelectorAll("ol");
@@ -228,6 +231,7 @@ function adjustContent() {
     ol.style.color = "#f0eaea";
     ol.style.listStyleType = "decimal";
     ol.style.paddingLeft = "1rem";
+    ol.style.webkitTextSizeAdjust = "100%";
   });
 
   const lis = content.querySelectorAll("li");
@@ -235,6 +239,7 @@ function adjustContent() {
     li.style.marginBottom = "0.5rem";
     li.style.lineHeight = "1.6";
     li.style.display = "list-item";
+    li.style.webkitTextSizeAdjust = "100%";
   });
 
   const headings = content.querySelectorAll("h1, h2, h3, h4");
@@ -243,6 +248,7 @@ function adjustContent() {
     heading.style.marginBottom = "0.75rem";
     heading.style.fontWeight = "700";
     heading.style.color = "#ff3344";
+    heading.style.webkitTextSizeAdjust = "100%";
   });
 
   const h1s = content.querySelectorAll("h1");
