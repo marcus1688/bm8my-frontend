@@ -1,7 +1,7 @@
 export default defineNuxtPlugin(() => {
   if (process.client) {
     window.__lc = window.__lc || {};
-    window.__lc.license = 1212;
+    window.__lc.license = 16323336;
     window.__lc.integration_name = "manual_onboarding";
     window.__lc.product_name = "livechat";
 
