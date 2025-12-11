@@ -518,7 +518,7 @@ const openLiveChat = () => {
   } else {
     console.warn("LiveChat Widget API is not available");
     window.open(
-      "https://www.livechat.com/customer-service/?utm_source=chat_button&utm_medium=referral&utm_campaign=lc_19076410",
+      "https://www.livechat.com/customer-service/?utm_source=chat_button&utm_medium=referral&utm_campaign=16323336",
       "_blank"
     );
   }
