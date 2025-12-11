@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <LiveChatButton />
+    <!-- <LiveChatButton /> -->
     <CompleteProfilePopup
       :is-visible="showCompleteProfile"
       :user-data="userData"
