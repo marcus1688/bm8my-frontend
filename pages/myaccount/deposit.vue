@@ -617,33 +617,33 @@ async function submitDeposit() {
     return;
   }
 
-  if (selectedOption.value === "fast_deposit") {
-    try {
-      const restrictionCheck = await get(`check-fast-deposit-restriction`);
-      if (
-        restrictionCheck.data.success &&
-        restrictionCheck.data.hasRestriction &&
-        userData.value.wallet + gameTotalBalances >= 10
-      ) {
-        showAlert(
-          $t("alert_info"),
-          $t("fast_deposit_balance_restriction"),
-          "info"
-        );
-        return;
-      }
-    } catch (error) {
-      console.error("Error checking fast deposit restriction:", error);
-      if (userData.value && userData.value.wallet + gameTotalBalances >= 10) {
-        showAlert(
-          $t("alert_info"),
-          $t("fast_deposit_balance_restriction"),
-          "info"
-        );
-        return;
-      }
-    }
-  }
+  // if (selectedOption.value === "fast_deposit") {
+  //   try {
+  //     const restrictionCheck = await get(`check-fast-deposit-restriction`);
+  //     if (
+  //       restrictionCheck.data.success &&
+  //       restrictionCheck.data.hasRestriction &&
+  //       userData.value.wallet + gameTotalBalances >= 10
+  //     ) {
+  //       showAlert(
+  //         $t("alert_info"),
+  //         $t("fast_deposit_balance_restriction"),
+  //         "info"
+  //       );
+  //       return;
+  //     }
+  //   } catch (error) {
+  //     console.error("Error checking fast deposit restriction:", error);
+  //     if (userData.value && userData.value.wallet + gameTotalBalances >= 10) {
+  //       showAlert(
+  //         $t("alert_info"),
+  //         $t("fast_deposit_balance_restriction"),
+  //         "info"
+  //       );
+  //       return;
+  //     }
+  //   }
+  // }
 
   if (selectedPromotion.value) {
     try {
