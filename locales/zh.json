@@ -1353,5 +1353,6 @@
   "wallet_balance": "钱包余额",
   "big_mystery_prize": "神秘大奖",
   "big_mystery_prize_desc": "神秘惊喜等着你",
-  "turnover_info_message": "达到流水要求后，您的有效流水将开始累积。继续游戏，尽享奖励！"
+  "turnover_info_message": "达到流水要求后，您的有效流水将开始累积。继续游戏，尽享奖励！",
+  "balances_restored": "余额恢复"
 }

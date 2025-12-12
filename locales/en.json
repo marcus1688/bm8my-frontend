@@ -1353,5 +1353,6 @@
   "wallet_balance": "Wallet Balance",
   "big_mystery_prize": "Big Mystery Prize",
   "big_mystery_prize_desc": "Mysterious big reward",
-  "turnover_info_message": "Your valid turnover will start accumulating once the requirement is met. Keep playing and enjoy your rewards!"
+  "turnover_info_message": "Your valid turnover will start accumulating once the requirement is met. Keep playing and enjoy your rewards!",
+  "balances_restored": "Balance Restore"
 }
