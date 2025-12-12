@@ -136,7 +136,7 @@
                         class="w-10 h-5 bg-[#15090e]/70 rounded-full peer peer-checked:bg-[#a1122d] relative after:content-[''] after:absolute after:top-[2px] after:left-[1px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all after:duration-300 after:shadow-md peer-checked:after:transform peer-checked:after:translate-x-[22px] peer-focus:ring-2 peer-focus:ring-[#ff3344]/50"
                       ></div>
                       <span
-                        class="ml-3 text-[#f0eaea] text-sm font-medium select-none transition-colors lg:group-hover:text-white"
+                        class="ml-3 text-[#f0eaea] text-sm font-medium select-none transition-colors lg:group-hover:text-white max-lg:text-xs max-lg:ml-1"
                         >{{ $t("remember_me") }}</span
                       >
                     </label>
@@ -144,7 +144,7 @@
                   <button
                     @click="handleForgotPassword"
                     type="button"
-                    class="text-sm text-[#ff3344] transition-colors font-medium"
+                    class="text-sm text-[#ff3344] transition-colors font-medium max-lg:text-xs"
                   >
                     {{ $t("forgot_password") }}
                   </button>
