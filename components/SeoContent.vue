@@ -19,7 +19,7 @@
           class="transition-all duration-500"
         >
           <div
-            class="p-8 space-y-6 max-lg:p-6 max-lg:space-y-4 max-md:p-4 max-md:space-y-3"
+            class="px-4 max-lg:px-3 space-y-6 max-lg:space-y-4 max-md:space-y-3"
           >
             <div
               v-for="block in seoData.contentBlocks"
@@ -130,38 +130,35 @@ watch(
   font-size: 14px;
 }
 
-.seo-content h1 {
+.seo-content h1,
+.seo-content h2,
+.seo-content h3,
+.seo-content h4,
+.seo-content h5,
+.seo-content h6 {
   color: #f0eaea;
   font-weight: bold;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.seo-content h1 {
   font-size: 1.5rem;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
 }
 
 .seo-content h2 {
-  color: #f0eaea;
-  font-weight: bold;
   font-size: 1.25rem;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
 }
 
 .seo-content h3 {
-  color: #f0eaea;
-  font-weight: bold;
   font-size: 1.1rem;
-  margin-top: 0.75em;
-  margin-bottom: 0.4em;
 }
 
 .seo-content h4,
 .seo-content h5,
 .seo-content h6 {
-  color: #f0eaea;
-  font-weight: 600;
   font-size: 1rem;
-  margin-top: 0.75em;
-  margin-bottom: 0.4em;
+  font-weight: 600;
 }
 
 .seo-content p {
@@ -192,6 +189,14 @@ watch(
   margin: 0.75em 0;
   padding-left: 1.5em;
   color: #b37a7a;
+}
+
+.seo-content ul {
+  list-style-type: disc;
+}
+
+.seo-content ol {
+  list-style-type: decimal;
 }
 
 .seo-content li {

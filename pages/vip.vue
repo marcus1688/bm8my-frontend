@@ -393,9 +393,9 @@ const levelNameTranslations = {
   gold: { en: "Gold", zh: "黃金", ms: "Emas" },
   platinum: { en: "Platinum", zh: "鉑金", ms: "Platinum" },
   "bm8 elite vip": {
-    en: "BM8 Elite VIP",
-    zh: "BM8 尊贵贵宾",
-    ms: "BM8 Elite VIP",
+    en: "bm8 Elite VIP",
+    zh: "bm8 尊贵贵宾",
+    ms: "bm8 Elite VIP",
   },
   diamond: { en: "Diamond", zh: "鑽石", ms: "Berlian" },
   royal: { en: "Royal", zh: "至尊", ms: "Raja" },
@@ -418,21 +418,21 @@ const rowNameTranslations = {
     zh: "VIP每月奖金",
     ms: "Bonus Bulanan VIP",
   },
-  "Rebate Slot": { en: "Rebate Slot", zh: "老虎机返水", ms: "Rebat Slot" },
+  "Rebate Slot": { en: "Rebate Slot", zh: "老虎机返水", ms: "Slots" },
   "Rebate Live Casino": {
     en: "Rebate Live Casino",
     zh: "真人娱乐返水",
-    ms: "Rebat Live Casino",
+    ms: "Kasino Langsung",
   },
   "Rebate Sports": {
     en: "Rebate Sports",
     zh: "体育返水",
-    ms: "Rebat Sports",
+    ms: "Sukan",
   },
   "Rebate Esports": {
     en: "Rebate Esports",
     zh: "电竞返水",
-    ms: "Rebat Esports",
+    ms: "E-Sukan",
   },
   "Birthday Bonus": {
     en: "Birthday Bonus",
@@ -447,17 +447,17 @@ const rowNameTranslations = {
   "Daily Rewards": {
     en: "Daily Rewards",
     zh: "每日奖励",
-    ms: "Daily Rewards",
+    ms: "Ganjaran Harian",
   },
   "Weekly Rewards": {
     en: "Weekly Rewards",
     zh: "每周奖励",
-    ms: "Weekly Rewards",
+    ms: "Ganjaran Mingguan",
   },
   "Monthly Rewards": {
     en: "Monthly Rewards",
     zh: "每月奖励",
-    ms: "Monthly Rewards",
+    ms: "Ganjaran Bulanan",
   },
   "Daily Bank Withdraw Limit": {
     en: "Daily Bank Withdraw Limit",
