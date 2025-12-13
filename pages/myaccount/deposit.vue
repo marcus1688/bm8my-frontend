@@ -401,7 +401,6 @@
           class="list-disc ml-7 space-y-1 text-sm text-[#b37a7a] max-lg:text-xs max-lg:ml-6"
         >
           <li>{{ $t("notice_1") }}</li>
-          <li>{{ $t("notice_2") }}</li>
           <template v-if="showFullNotice">
             <li>{{ $t("notice_3") }}</li>
             <li>{{ $t("notice_4") }}</li>
