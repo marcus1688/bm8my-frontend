@@ -39,7 +39,6 @@
               />
             </div>
 
-            <!-- Bank Name Dropdown -->
             <div>
               <label class="block text-xs font-semibold text-[#f0eaea] mb-1.5">
                 {{ $t("bank_name") }}
