@@ -1,7 +1,6 @@
 <template>
   <ClientOnly>
     <div
-      v-if="isUserLoggedIn"
       class="w-full h-[60px] bg-[#1A0D13] border-t border-[#3b1c23] flex gap-2 justify-around items-center shadow-lg shadow-[#ff3344]/10 z-30"
     >
       <!-- HOME -->

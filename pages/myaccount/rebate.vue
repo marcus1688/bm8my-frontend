@@ -391,6 +391,9 @@
 import UserAccountLayout from "~/layouts/UserAccountLayout.vue";
 import { Icon } from "@iconify/vue";
 
+const { checkAuth } = useAuthCheck();
+await checkAuth();
+
 const settingsData = ref({
   tableTitle: "VIP Exclusive Benefits",
   rowHeaders: [],

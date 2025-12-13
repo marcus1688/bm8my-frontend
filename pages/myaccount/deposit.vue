@@ -245,13 +245,13 @@
         <label class="block font-semibold mb-2 text-base max-lg:text-sm">{{
           $t("select_bank")
         }}</label>
-        <div class="grid grid-cols-5 max-sm:grid-cols-2 gap-2">
+        <div class="flex flex-wrap gap-3 max-lg:gap-2">
           <button
             v-for="bank in depositbank"
             :key="bank._id"
             @click="openBankModal(bank)"
             :class="[
-              ' rounded-lg flex items-center justify-center transition-all border w-32 h-32 max-sm:w-24 max-sm:h-24',
+              'rounded-lg flex items-center justify-center transition-all border w-36 h-36 max-lg:w-28 max-lg:h-28 max-sm:w-24 max-sm:h-24 p-1',
               selectedBank && selectedBank.bankaccount === bank.bankaccount
                 ? 'bg-[#ff3344]/10 border-[#ff3344]'
                 : 'bg-[#241017] border-[#3b1c23] lg:hover:border-[#ff3344]/50',
@@ -261,13 +261,13 @@
               v-if="bank.qrimage"
               :src="bank.qrimage"
               :alt="bank.bankname"
-              class="w-full h-full object-contain"
+              class="max-w-full max-h-full object-contain"
             />
             <img
               v-else
               src="/images/deposit/bank.png"
               :alt="bank.bankname"
-              class="w-full h-full object-contain"
+              class="max-w-full max-h-full object-contain"
             />
           </button>
         </div>
