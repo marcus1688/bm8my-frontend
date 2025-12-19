@@ -25,7 +25,7 @@
         style="background-image: url('/images/header.png')"
       >
         <div
-          class="mx-auto px-24 py-4 h-full max-[1600px]:px-12 max-[1350px]:px-2 max-[1070px]:px-0 max-lg:p-2 max-[1350px]:flex max-lg:block max-[1350px]:justify-between"
+          class="mx-auto px-24 py-4 h-full max-[1650px]:px-12 max-[1350px]:px-2 max-[1070px]:px-0 max-lg:p-2 max-[1350px]:flex max-lg:block max-[1350px]:justify-between"
         >
           <div class="flex justify-between items-center h-full w-full">
             <div class="flex items-center gap-4 max-[373px]:!gap-2">
@@ -35,7 +35,7 @@
               >
                 <i class="bi bi-list text-2xl max-[480px]:text-xl"></i>
               </button>
-              <NuxtLinkLocale class="max-[1500px]:hidden" to="/">
+              <NuxtLinkLocale class="max-[1550px]:hidden" to="/">
                 <img
                   :src="generalSetting.logoimage"
                   alt="Logo"
@@ -64,7 +64,7 @@
             </div>
 
             <nav
-              class="hidden lg:flex items-center flex-1 justify-center min-[1500px]:mr-24"
+              class="hidden lg:flex items-center flex-1 justify-center min-[1750px]:mr-24"
             >
               <NuxtLinkLocale
                 to="/"
@@ -142,7 +142,7 @@
                   <!-- Deposit Icon -->
                   <NuxtLinkLocale
                     to="/myaccount/deposit"
-                    class="relative max-lg:hidden"
+                    class="relative max-[1500px]:hidden"
                   >
                     <div
                       class="w-9 h-9 bg-red-600 rounded-full flex items-center justify-center"
@@ -174,7 +174,10 @@
                   </NuxtLinkLocale>
 
                   <!-- Message Icon -->
-                  <NuxtLinkLocale to="/myaccount/messaging" class="relative">
+                  <NuxtLinkLocale
+                    to="/myaccount/messaging"
+                    class="relative max-[1500px]:hidden"
+                  >
                     <div
                       class="w-9 h-9 bg-red-600 rounded-full flex items-center justify-center"
                     >
