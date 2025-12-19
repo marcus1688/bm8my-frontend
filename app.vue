@@ -325,6 +325,7 @@ onMounted(async () => {
       checkPopupVisibility(),
       fetchCarousel(),
     ]);
+    await preloadAllImages();
   } catch (error) {
     console.error("Error during critical initialization:", error);
   } finally {
@@ -336,7 +337,6 @@ onMounted(async () => {
     fetchLuckyDrawStatus(),
     fetchLuckySpinRate(),
   ]).catch((err) => console.error("Background fetch error:", err));
-  preloadAllImages().catch((err) => console.error("Image preload error:", err));
 });
 
 onUnmounted(() => {
