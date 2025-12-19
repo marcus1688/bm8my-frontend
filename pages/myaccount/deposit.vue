@@ -96,7 +96,7 @@
         <label class="block font-semibold mb-2 text-base max-lg:text-sm">{{
           $t("deposit_method")
         }}</label>
-        <div class="grid grid-cols-2 gap-3 max-lg:gap-2">
+        <div class="grid grid-cols-3 max-lg:grid-cols-2 gap-3 max-lg:gap-2">
           <button
             v-for="option in depositOptions"
             :key="option.name"
@@ -456,6 +456,7 @@ const { get, post } = useApiEndpoint();
 const depositOptions = [
   { name: "fast_deposit", label: "fast_deposit", icon: "mdi:flash" },
   { name: "bank_transfer", label: "bank_transfer", icon: "mdi:bank" },
+  { name: "crypto_deposit", label: "crypto_deposit", icon: "mdi:bitcoin" },
 ];
 
 const selectedOption = ref("fast_deposit");
@@ -484,6 +485,11 @@ function confirmBankSelection(bank) {
 }
 
 function selectOption(option) {
+  if (option === "crypto_deposit") {
+    showAlert($t("alert_info"), $t("crypto_deposit_contact_cs"), "info");
+    return;
+  }
+
   selectedOption.value = option;
   if (option === "fast_deposit" && paymentGateways.value.length > 0) {
     selectPaymentGateway(paymentGateways.value[0]);

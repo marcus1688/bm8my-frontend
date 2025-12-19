@@ -1355,5 +1355,7 @@
   "big_mystery_prize_desc": "神秘惊喜等着你",
   "turnover_info_message": "达到流水要求后，您的有效流水将开始累积。继续游戏，尽享奖励！",
   "balances_restored": "余额恢复",
-  "fastgame": "快速游戏"
+  "fastgame": "快速游戏",
+  "crypto_deposit": "加密货币存款",
+  "crypto_deposit_contact_cs": "如需加密货币存款，请联系客服获取存款资料。"
 }

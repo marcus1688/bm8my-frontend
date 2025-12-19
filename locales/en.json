@@ -1355,5 +1355,7 @@
   "big_mystery_prize_desc": "Mysterious big reward",
   "turnover_info_message": "Your valid turnover will start accumulating once the requirement is met. Keep playing and enjoy your rewards!",
   "balances_restored": "Balance Restore",
-  "fastgame": "Fast Games"
+  "fastgame": "Fast Games",
+  "crypto_deposit": "Crypto Deposit",
+  "crypto_deposit_contact_cs": "For crypto deposit, please contact our customer service to get deposit details."
 }
