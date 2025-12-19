@@ -17,6 +17,7 @@ const sportsKiosks = useState("sportsKiosks", () => []);
 const esportsKiosks = useState("esportsKiosks", () => []);
 const fishingKiosks = useState("fishingKiosks", () => []);
 const lotteryKiosks = useState("lotteryKiosks", () => []);
+const fastgameKiosks = useState("fastgameKiosks", () => []);
 const partners = useState("partners", () => []);
 const userData = useState("userData");
 const unreadCount = useState("unreadCount", () => null);
@@ -112,6 +113,9 @@ async function fetchKiosks() {
     );
     lotteryKiosks.value = data.data.filter(
       (kiosk) => kiosk.categoryId?.name === "Lottery"
+    );
+    fastgameKiosks.value = data.data.filter(
+      (kiosk) => kiosk.categoryId?.name === "Fast Games"
     );
     if (userData.value?._id) {
       await fetchUserGameLocks();

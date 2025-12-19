@@ -118,6 +118,10 @@ export const useGameLauncher = () => {
           targetPath = "/games/livecasino";
           stateVariable = "selectedLiveCasinoProvider";
           break;
+        case "Fast Games":
+          targetPath = "/games/fastgame";
+          stateVariable = "selectedFastGameProvider";
+          break;
         default:
           console.warn("Unknown game category:", game?.categoryId?.name);
           targetPath = "/games/slots";

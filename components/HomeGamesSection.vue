@@ -207,6 +207,14 @@
             :onClick="launchGame"
             :isGameLocked="isGameLocked"
           />
+
+          <!-- Fast Games -->
+          <GameCardGrid
+            v-if="activeCategory === 6"
+            :games="fastgameKiosks"
+            :onClick="launchGame"
+            :isGameLocked="isGameLocked"
+          />
         </div>
       </div>
 
@@ -218,7 +226,8 @@
           (activeCategory === 2 && sportsKiosks.length === 0) ||
           (activeCategory === 3 && esportsKiosks.length === 0) ||
           (activeCategory === 4 && fishingKiosks.length === 0) ||
-          (activeCategory === 5 && lotteryKiosks.length === 0)
+          (activeCategory === 5 && lotteryKiosks.length === 0) ||
+          (activeCategory === 6 && fastgameKiosks.length === 0)
         "
         class="py-8 text-center"
       >
@@ -259,6 +268,7 @@ const sportsKiosks = useState("sportsKiosks");
 const esportsKiosks = useState("esportsKiosks");
 const fishingKiosks = useState("fishingKiosks");
 const lotteryKiosks = useState("lotteryKiosks");
+const fastgameKiosks = useState("fastgameKiosks");
 const activeCategory = ref(0);
 const userGameLocks = useState("userGameLocks");
 const isUserLoggedIn = useState("isUserLoggedIn");
@@ -294,6 +304,11 @@ const categories = [
     name: { en: "Lottery", zh: "彩票", ms: "Loteri" },
     iconActive: "/images/maingameicon/Lottery_active.png",
     iconInactive: "/images/maingameicon/Lottery_deactivate.png",
+  },
+  {
+    name: { en: "Fast Games", zh: "快速游戏", ms: "Permainan Pantas" },
+    iconActive: "/images/maingameicon/fastgameicon.png",
+    iconInactive: "/images/maingameicon/fastgameicon.png",
   },
 ];
 

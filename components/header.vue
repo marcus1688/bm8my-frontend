@@ -77,7 +77,7 @@
               <div
                 v-for="item in HeaderNav"
                 :key="item.name"
-                class="relative px-3"
+                class="relative px-3 max-[1090px]:px-2"
               >
                 <div
                   class="py-2 inline-block"
@@ -85,10 +85,10 @@
                 >
                   <NuxtLinkLocale
                     :to="`${item.link}`"
-                    class="flex items-center gap-1 menuText font-medium text-gray-300 lg:hover:text-red-400 transition-colors"
+                    class="flex items-center gap-1 max-[1100px]:gap-0.5 menuText font-medium text-gray-300 lg:hover:text-red-400 transition-colors"
                   >
                     <span
-                      class="max-[1060px]:text-[0.8rem] max-lg:text-[1rem]"
+                      class="max-lg:text-[1rem] max-[1150px]:text-[0.8rem]"
                       >{{ item.label }}</span
                     >
                     <i class="bi bi-chevron-down text-xs"></i>
@@ -135,7 +135,10 @@
                     {{ $t("register") }}
                   </NuxtLinkLocale>
                 </div>
-                <div v-else class="flex items-center gap-3">
+                <div
+                  v-else
+                  class="flex items-center gap-3 max-[1165px]:gap-2 max-[1023px]:gap-3"
+                >
                   <!-- Deposit Icon -->
                   <NuxtLinkLocale
                     to="/myaccount/deposit"
@@ -1406,6 +1409,77 @@
                   </div>
                 </template>
               </div>
+
+              <div
+                v-if="item.name === 'Fast Games'"
+                class="grid grid-cols-8 max-2xl:grid-cols-7 max-xl:grid-cols-6 max-lg:grid-cols-5 game-grid gap-x-2"
+              >
+                <template
+                  v-for="(game, index) in fastgameKiosks"
+                  :key="game._id"
+                >
+                  <div
+                    v-if="index < 15"
+                    class="game-item group cursor-pointer relative"
+                    @click="launchGame(game)"
+                  >
+                    <div
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
+                    >
+                      <div
+                        v-if="isGameLocked(game.databaseName)"
+                        class="absolute inset-0 bg-black/80 flex items-center justify-center z-20"
+                      ></div>
+                      <div
+                        class="inactive-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 pointer-events-none z-10"
+                      ></div>
+
+                      <img
+                        :src="game.icon || fallback(game.name)"
+                        :alt="game.name"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
+                      />
+                    </div>
+                  </div>
+                </template>
+
+                <div
+                  v-if="fastgameKiosks.length > 15"
+                  class="game-item group cursor-pointer relative"
+                >
+                  <NuxtLinkLocale
+                    :to="HeaderNav.find((nav) => nav.name === 'Slots').link"
+                    @click="activeDropdown = null"
+                    class="game-item group cursor-pointer relative block h-full"
+                  >
+                    <div
+                      class="aspect-[3/4] flex items-center justify-center relative transition-all duration-300"
+                    >
+                      <div
+                        class="inactive-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 pointer-events-none z-10"
+                      ></div>
+
+                      <img
+                        src="/images/logo/view_more.png"
+                        alt="View More"
+                        class="w-full h-full object-contain relative z-0 transition-transform duration-300 lg:group-hover:scale-105"
+                      />
+                      <div
+                        class="absolute inset-0 flex flex-col items-center justify-center text-center p-4 z-5"
+                      >
+                        <span
+                          class="text-red-400 font-bold text-sm mb-1 lg:group-hover:text-red-300 transition-colors uppercase tracking-wide"
+                        >
+                          {{ $t("view_more") }}
+                        </span>
+                        <span class="text-[#b37a7a] text-xs">
+                          {{ fastgameKiosks.length - 15 }} {{ $t("games") }}
+                        </span>
+                      </div>
+                    </div>
+                  </NuxtLinkLocale>
+                </div>
+              </div>
             </div>
           </div>
         </template>
@@ -2558,6 +2632,7 @@ const sportsKiosks = useState("sportsKiosks");
 const esportsKiosks = useState("esportsKiosks");
 const fishingKiosks = useState("fishingKiosks");
 const lotteryKiosks = useState("lotteryKiosks");
+const fastgameKiosks = useState("fastgameKiosks");
 const isUserLoggedIn = useState("isUserLoggedIn");
 const luckyDrawStatus = useState("luckyDrawStatus");
 const localePath = useLocalePath();
@@ -2691,6 +2766,13 @@ const HeaderNav = computed(() => [
     label: $t("lottery"),
     link: "/games/lottery",
     icon: "/images/burger-menu/lottery.png",
+  },
+
+  {
+    name: "Fast Games",
+    label: $t("fastgame"),
+    link: "/games/fastgame",
+    icon: "/images/burger-menu/fastgame.png",
   },
 ]);
 const getIconBgClass = (name) => {
