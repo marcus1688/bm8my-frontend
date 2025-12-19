@@ -322,19 +322,21 @@ onMounted(async () => {
   try {
     await Promise.all([
       fetchGeneralSetting(),
-      fetchKiosks(),
-      fetchSmsStatus(),
-      fetchLuckyDrawStatus(),
-      fetchCarousel(),
       checkPopupVisibility(),
-      fetchLuckySpinRate(),
+      fetchCarousel(),
     ]);
-    await preloadAllImages();
   } catch (error) {
-    console.error("Error during initialization:", error);
+    console.error("Error during critical initialization:", error);
   } finally {
     pageLoading.value = false;
   }
+  Promise.all([
+    fetchKiosks(),
+    fetchSmsStatus(),
+    fetchLuckyDrawStatus(),
+    fetchLuckySpinRate(),
+  ]).catch((err) => console.error("Background fetch error:", err));
+  preloadAllImages().catch((err) => console.error("Image preload error:", err));
 });
 
 onUnmounted(() => {
