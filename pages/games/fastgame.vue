@@ -66,7 +66,7 @@
                 class="w-12 h-12 flex items-center justify-center mb-1 max-lg:w-10 max-lg:h-10"
               >
                 <img
-                  :src="provider.logo"
+                  :src="provider.banner"
                   :alt="provider.name"
                   class="max-w-full max-h-full object-contain"
                 />
