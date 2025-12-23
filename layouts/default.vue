@@ -1,5 +1,6 @@
 <template>
   <ClientOnly>
+    <SnowEffect ref="snowEffectRef" />
     <!-- <LiveChatButton /> -->
     <CompleteProfilePopup
       :is-visible="showCompleteProfile"
