@@ -45,7 +45,7 @@
             <NuxtMarquee
               play
               direction="left"
-              speed="80"
+              :speed="marqueeSpeed"
               pauseOnHover
               class="text-sm max-lg:text-xs"
             >
