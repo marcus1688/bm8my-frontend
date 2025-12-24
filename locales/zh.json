@@ -1357,5 +1357,6 @@
   "balances_restored": "余额恢复",
   "fastgame": "快速游戏",
   "crypto_deposit": "加密货币存款",
-  "crypto_deposit_contact_cs": "如需加密货币存款，请联系客服获取存款资料。"
+  "crypto_deposit_contact_cs": "如需加密货币存款，请联系客服获取存款资料。",
+  "language": "语言"
 }

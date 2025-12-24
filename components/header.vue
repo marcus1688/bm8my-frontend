@@ -1618,7 +1618,7 @@
                       </span>
                     </NuxtLinkLocale>
 
-                    <div class="relative">
+                    <!-- <div class="relative">
                       <button
                         @click.stop="showLanguagePanel = true"
                         class="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 text-white lg:hover:bg-white/30 transition-colors"
@@ -1642,7 +1642,7 @@
                           class="w-5 h-auto"
                         />
                       </button>
-                    </div>
+                    </div> -->
 
                     <button
                       @click="closeMobileMenu"
@@ -2210,6 +2210,39 @@
                           {{ $t("vip") }}
                         </span>
                       </NuxtLinkLocale>
+
+                      <div
+                        @click.stop="showLanguagePanel = true"
+                        class="group flex flex-col items-center p-3 bg-[#241017]/60 rounded-xl border border-[#3b1c23] lg:hover:bg-[#2a0f14] lg:hover:border-[#ff3344]/30 transition-all cursor-pointer"
+                      >
+                        <div
+                          class="w-12 h-12 flex items-center justify-center mb-2 lg:group-hover:scale-105 transition-transform"
+                        >
+                          <img
+                            v-if="isMalaysiaDomain"
+                            src="/images/flags/malaysia.png"
+                            alt="Malaysia"
+                            class="w-10 h-auto"
+                          />
+                          <img
+                            v-else-if="isSingaporeDomain"
+                            src="/images/flags/singapore.png"
+                            alt="Singapore"
+                            class="w-10 h-auto"
+                          />
+                          <img
+                            v-else
+                            :src="generalSetting.logoimage"
+                            alt="Region"
+                            class="w-10 h-auto"
+                          />
+                        </div>
+                        <span
+                          class="text-sm font-medium text-white text-center lg:group-hover:text-[#ff3344] transition-colors"
+                        >
+                          {{ $t("language") }}
+                        </span>
+                      </div>
 
                       <NuxtLinkLocale
                         to="/blog"

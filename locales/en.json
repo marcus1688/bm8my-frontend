@@ -1357,5 +1357,6 @@
   "balances_restored": "Balance Restore",
   "fastgame": "Fast Games",
   "crypto_deposit": "Crypto Deposit",
-  "crypto_deposit_contact_cs": "For crypto deposit, please contact our customer service to get deposit details."
+  "crypto_deposit_contact_cs": "For crypto deposit, please contact our customer service to get deposit details.",
+  "language": "Language"
 }
