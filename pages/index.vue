@@ -45,11 +45,11 @@
             <NuxtMarquee
               play
               direction="left"
-              speed="10"
+              speed="100"
               pauseOnHover
               class="text-sm max-lg:text-xs"
             >
-              <p class="text-red-100">
+              <p class="text-red-100 px-[50vw]">
                 {{ announcement }}
               </p>
             </NuxtMarquee>
