@@ -200,7 +200,7 @@
             :isGameLocked="isGameLocked"
           />
 
-          <!-- Lottery Game -->
+          <!-- Lottery Games -->
           <GameCardGrid
             v-if="activeCategory === 5"
             :games="lotteryKiosks"
