@@ -2219,22 +2219,9 @@
                           class="w-12 h-12 flex items-center justify-center mb-2 lg:group-hover:scale-105 transition-transform"
                         >
                           <img
-                            v-if="isMalaysiaDomain"
-                            src="/images/flags/malaysia.png"
+                            src="/images/header/languagebm.png"
                             alt="Malaysia"
-                            class="w-10 h-auto"
-                          />
-                          <img
-                            v-else-if="isSingaporeDomain"
-                            src="/images/flags/singapore.png"
-                            alt="Singapore"
-                            class="w-10 h-auto"
-                          />
-                          <img
-                            v-else
-                            :src="generalSetting.logoimage"
-                            alt="Region"
-                            class="w-10 h-auto"
+                            class="w-full h-auto object-contain"
                           />
                         </div>
                         <span
