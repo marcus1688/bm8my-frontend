@@ -45,7 +45,7 @@
             <NuxtMarquee
               play
               direction="left"
-              speed="100"
+              speed="80"
               pauseOnHover
               class="text-sm max-lg:text-xs"
             >
@@ -108,6 +108,11 @@ const activePopup = useState("activePopup");
 const shouldShowPopup = useState("shouldShowPopup");
 const showLuckySpin = ref(false);
 const carousel = useState("carousel");
+const isMobile = ref(false);
+
+const marqueeSpeed = computed(() => {
+  return isMobile.value ? 50 : 100;
+});
 
 const announcement = computed(() => {
   return $locale.value === "zh"
@@ -214,6 +219,19 @@ useHead({
       href: "https://www.bm8my.vip/",
     },
   ],
+});
+
+onMounted(() => {
+  const checkMobile = () => {
+    isMobile.value = window.innerWidth < 1024;
+  };
+
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+
+  onUnmounted(() => {
+    window.removeEventListener("resize", checkMobile);
+  });
 });
 </script>
 
