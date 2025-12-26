@@ -124,13 +124,13 @@
                 <div v-if="!userData" class="flex gap-2 items-center">
                   <NuxtLinkLocale
                     to="/login"
-                    class="px-4 py-1.5 max-[360px]:!px-4 menuText font-medium bg-gradient-to-r from-yellow-700 to-yellow-600 text-white rounded lg:hover:from-yellow-600 lg:hover:to-yellow-500 transition-all shadow-md shadow-yellow-600/20"
+                    class="px-4 py-1.5 max-[360px]:!px-4 menuText font-medium bg-black text-white rounded border border-[#ff3344] lg:hover:bg-[#ff3344] lg:hover:text-white transition-colors"
                   >
                     {{ $t("log_in") }}
                   </NuxtLinkLocale>
                   <NuxtLinkLocale
                     to="/register"
-                    class="px-4 py-1.5 max-[360px]:!px-4 menuText font-medium bg-red-600 lg:hover:bg-red-700 text-white rounded transition-colors"
+                    class="px-4 py-1.5 max-[360px]:!px-4 menuText font-medium bg-red-600 lg:hover:bg-red-700 text-white rounded transition-colors border border-red-600 lg:hover:border-red-700"
                   >
                     {{ $t("register") }}
                   </NuxtLinkLocale>
