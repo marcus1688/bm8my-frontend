@@ -11,7 +11,6 @@
           @click.stop
           :class="isVisible ? 'animate-popupIn' : ''"
         >
-          <!-- Header -->
           <div
             class="p-4 border-b border-[#3b1c23] flex items-center justify-between flex-shrink-0"
           >
