@@ -1997,7 +1997,7 @@
                     <NuxtLinkLocale
                       to="/login"
                       @click="closeMobileMenu"
-                      class="flex-1 py-2 text-center bg-gradient-to-r from-yellow-700 to-yellow-600 rounded-lg text-white font-medium mobileMenuText shadow-lg shadow-yellow-600/30 transition-all lg:hover:from-yellow-600 lg:hover:to-yellow-500"
+                      class="flex-1 py-2 text-center bg-black text-white rounded-lg font-medium mobileMenuText border border-[#ff3344] shadow-lg shadow-[#ff3344]/30 transition-all lg:hover:bg-[#ff3344] lg:hover:text-white"
                     >
                       {{ $t("log_in") }}
                     </NuxtLinkLocale>
