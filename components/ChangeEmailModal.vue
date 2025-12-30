@@ -26,7 +26,6 @@
             </button>
           </div>
 
-          <!-- Content -->
           <div class="p-4 overflow-y-auto flex-1 space-y-4">
             <div>
               <label class="block text-sm font-semibold text-[#f0eaea] mb-2">
